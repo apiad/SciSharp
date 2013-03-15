@@ -1,0 +1,58 @@
+﻿// ============================================================================
+// File: MultiplyMatrix.ps
+// ----------------------------------------------------------------------------
+// Description: Pixel shader used to multiply matrices by the standard method.
+// Author: Alejandro Piad <alepiad@gmail.com>
+//
+// Standard matrix multiplication can be seen as an external loop like:
+// 
+//        for k in ColsLeft:
+//            M[i,j] += L[i,k] * R[k,j]
+//
+// This method implements the loop's body, while the loop itself is done in
+// in C#. The value of k is in the 'Index' field of the constant buffer.
+// ----------------------------------------------------------------------------
+
+// Output data
+RWStructuredBuffer<float> result    : register (u1);
+
+// Input data
+RWStructuredBuffer<float> left      : register (u2);
+RWStructuredBuffer<float> right     : register (u3);
+
+// Constant data
+cbuffer MultyplyMatrixInfo          : register( b0 )
+{
+    int Rows;
+    int Cols;
+    int Mid;
+    int Index;
+}
+
+struct PS_IN
+{
+    float4 proj : SV_POSITION;
+};
+
+uint GetIndex(int row, int col, int cols)
+{
+    return uint(col * cols + row);
+}
+
+void PS( PS_IN input )
+{
+    // Get the output coordinates
+    uint row = input.proj.y;
+    uint col = input.proj.x;
+    uint coord = GetIndex(row, col, Cols);
+
+    // Get the coordinate
+    uint leftCoord = GetIndex(row, Index, Mid);
+    uint rightCoord = GetIndex(Index, col, Cols);
+
+    // Multiply and accumulate the values
+    result[coord] += left[leftCoord] * right[rightCoord];
+
+    // As simple as that...
+    return;
+}

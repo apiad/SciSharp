@@ -1,0 +1,126 @@
+The root \emph{namespace} in \sct contains
+basic tools used by the rest of the framework. This
+includes the basic matrix and vector operations,
+function definition and composition, 
+definition of exceptions specific to the
+framework, some exension methods for \texttt{IEnumerable<T>},
+logging and debugging tools, and some basic data types.
+The \texttt{Vector} and \texttt{Matrix} classes provide
+algebraic operations on these data types. The \texttt{Function}
+static class and related classes and interfaces provide
+the functionality for function definition, composition and
+differentiation.
+
+Other important classes in the root \emph{namespace} are
+\texttt{Engine}, \texttt{Debug}, \texttt{Logger} and
+\texttt{Serializers}.
+These are static classes which store configuration
+parameters for the rest of the framework. The \texttt{Engine}
+class deals with numerical comparisons and the configurations
+for the parallel, distributed and GPU implementations of the
+algorithms which support these features. The \texttt{Debug}
+class provides methods to track the execution of algorithms.
+The \texttt{Logger} class provides methods to generate
+logging data. The \texttt{Serializers} class provides methods
+for saving and loading data in various formats.
+
+%========================================================================
+\section{Algebraic Operations}
+%========================================================================
+
+The \typeref{Vector}{ScientificTools.Vector} and 
+\typeref{Matrix}{ScientificTools.Matrix} classes provide an
+object-oriented abstraction of the corresponding
+mathematical entities. Both classes provide the corresponding
+definitions for arithmetic operations (using static methods, instance
+methods and operator overloading) and indexers.
+
+%========================================================================
+\section{The \texttt{Engine} Class}
+%========================================================================
+
+%========================================================================
+\section{Debugging and Logging}
+%========================================================================
+
+%========================================================================
+\section{Serialization}
+%========================================================================
+
+%========================================================================
+\section{Configuration Contexts}
+%========================================================================
+
+The four classes seen in the previous sections
+store configuration values in static
+properties. To help setting and restoring these values, the
+classes are built around the concept of \emph{contexts}.
+A context is an instance of the \texttt{IContext} interface,
+which stores internal data necessary to restore configuration
+values to the specific class. Contexts are created using
+the static method \texttt{OpenContext} in each of the
+specified classes, and destroyed using the \texttt{CloseContext}
+method of the \texttt{IContext} instance. When a context
+is closed, it restores all configuration
+properties to the values they had before the context creation.
+
+As an example, take a look at the following line of code.
+
+\begin{verbatim}
+Serializers.PathPrefix = "FolderA";
+
+var context = Serializers.OpenContext();
+
+// All changes after this line will be undo
+Serializers.PathPrefix = "FolderB"
+
+// Do your stuff
+
+context.CloseContext();
+
+Debug.Assert(Serializers.PathPrefix == "FolderA");
+\end{verbatim}
+
+As you can see if you run this code, the previous value
+for the \texttt{PathPrefix} property is restored after the
+call to \texttt{CloseContext}. This functionality
+becomes increasingly useful if you nest context creations.
+The basic idea is that if you need to change some
+configuration data inside your algorithm, you do it inside
+a context, so that the configuration setted by the caller
+is restored before your algorithm ends. 
+
+The \texttt{IContext} interface implements \texttt{IDisposable},
+which allows the \texttt{using} idiom to be employed, for
+easier manipulation of contexts. The previous example can be
+rewritten in the following form;
+
+\begin{verbatim}
+Serializers.PathPrefix = "FolderA";
+
+using(Serializers.OpenContext()}
+{
+    // All changes after this line will be undo
+    Serializers.PathPrefix = "FolderB"
+
+    // Do your stuff
+}
+
+Debug.Assert(Serializers.PathPrefix == "FolderA");
+\end{verbatim}
+
+Notice that the \texttt{using} instruction takes care
+of calling \texttt{Dispose}, which in return calls \texttt{CloseContext}.
+Since the \texttt{context} variable is unused inside the \texttt{using}
+block, there is no need to declare it. This idiom also makes explicit
+the contexts nesting which avoids the common mistake of closing contexts
+in the wrong order. It is also cleaner since you don't get to see
+any alien \texttt{IContext} instance in your code.
+
+%========================================================================
+\section{Extension Methods}
+%========================================================================
+
+%========================================================================
+\section{The \texttt{Scanner} Class}
+%========================================================================

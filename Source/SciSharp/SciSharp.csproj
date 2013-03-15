@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E907B5DD-0070-406E-8DFA-E1C6007CAB8C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SciSharp</RootNamespace>
+    <AssemblyName>SciSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <LangVersion>4</LangVersion>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>bin\Release\SciSharp.xml</DocumentationFile>
+    <LangVersion>4</LangVersion>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Benchmarks\Combinatorial\ProblemInstance.cs" />
+    <Compile Include="Benchmarks\Combinatorial\ProblemSolution.cs" />
+    <Compile Include="Benchmarks\Combinatorial\QAPInstance.cs" />
+    <Compile Include="Benchmarks\Combinatorial\QAPSolution.cs" />
+    <Compile Include="Benchmarks\Combinatorial\SPPInstance.cs" />
+    <Compile Include="Benchmarks\Combinatorial\SPPSolution.cs" />
+    <Compile Include="Benchmarks\Combinatorial\TspInstance.cs" />
+    <Compile Include="Benchmarks\Combinatorial\TspInstanceDistributionFactory.cs" />
+    <Compile Include="Benchmarks\Combinatorial\TspInstanceWalkFactory.cs" />
+    <Compile Include="Benchmarks\Combinatorial\TspSolution.cs" />
+    <Compile Include="Benchmarks\Combinatorial\TwoSPInstance.cs" />
+    <Compile Include="Benchmarks\Combinatorial\TwoSPSolution.cs" />
+    <Compile Include="Context.cs" />
+    <Compile Include="Function.Internal.cs" />
+    <Compile Include="Function.cs" />
+    <Compile Include="GameTheory\MonteCarloPlayout.cs" />
+    <Compile Include="GameTheory\MonteCarloSelection.cs" />
+    <Compile Include="IAnaliticFunction.cs" />
+    <Compile Include="IContext.cs" />
+    <Compile Include="IRealFunction.cs" />
+    <Compile Include="Benchmarks\BenchmarkEventArgs.cs" />
+    <Compile Include="Learning\Classification\ClassifiersCommitee.cs" />
+    <Compile Include="Learning\Classification\FeatureExtraction.cs" />
+    <Compile Include="Learning\Classification\TrainingExample.cs" />
+    <Compile Include="Learning\Classification\FeedFowardNetwork.cs" />
+    <Compile Include="Learning\Classification\TrainingResult.cs" />
+    <Compile Include="Learning\Classification\TrainingSet.cs" />
+    <Compile Include="Collections\Arrays.cs" />
+    <Compile Include="Collections\ArraySet.cs" />
+    <Compile Include="Collections\ArraySlice.cs" />
+    <Compile Include="Collections\AvlDictionary.cs" />
+    <Compile Include="Collections\Combinatorics.cs" />
+    <Compile Include="Collections\AvlTree.cs" />
+    <Compile Include="Collections\AvlTree.Node.cs" />
+    <Compile Include="Collections\Dictionaries.cs" />
+    <Compile Include="Collections\DimensionStrategies.cs" />
+    <Compile Include="Collections\DimensionStrategy.cs" />
+    <Compile Include="Collections\DisplacedIntSet.cs" />
+    <Compile Include="Collections\Edge.cs" />
+    <Compile Include="Collections\ElementSet.cs" />
+    <Compile Include="Collections\FiniteSetBase.cs" />
+    <Compile Include="Collections\Graphs.cs" />
+    <Compile Include="Collections\IDirectedGraph.cs" />
+    <Compile Include="Collections\IEnumerableSet.cs" />
+    <Compile Include="Collections\IFiniteSet.cs" />
+    <Compile Include="Collections\IGraph.cs" />
+    <Compile Include="Collections\IQueue.cs" />
+    <Compile Include="Collections\ISet.cs" />
+    <Compile Include="Collections\IStack.cs" />
+    <Compile Include="Collections\KdTree.cs" />
+    <Compile Include="Collections\KdTree.KdNode.cs" />
+    <Compile Include="Collections\MethodSet.cs" />
+    <Compile Include="Collections\PartitionStrategies.cs" />
+    <Compile Include="Collections\PartitionStrategy.cs" />
+    <Compile Include="Collections\RandomizedHeap.cs" />
+    <Compile Include="Collections\RandomSet.cs" />
+    <Compile Include="Collections\RangeSet.cs" />
+    <Compile Include="Collections\DefaultDictionary.cs" />
+    <Compile Include="GameTheory\GameTree.cs" />
+    <Compile Include="GameTheory\IdAlphaBetaSearch.cs" />
+    <Compile Include="GameTheory\IGame.cs" />
+    <Compile Include="GameTheory\IGameKey.cs" />
+    <Compile Include="GameTheory\IPlay.cs" />
+    <Compile Include="GameTheory\MonteCarloSearch.cs" />
+    <Compile Include="GameTheory\MonteCarloStrategies.cs" />
+    <Compile Include="Indexed.cs" />
+    <Compile Include="KeyComparer.cs" />
+    <Compile Include="Language\Grammars\ParsingException.cs" />
+    <Compile Include="Language\Grammars\Generation\Generate.cs" />
+    <Compile Include="Language\Grammars\NotMatchedException.cs" />
+    <Compile Include="Language\Grammars\UnexpectedTokenException.cs" />
+    <Compile Include="Language\Grammars\WrongTokenException.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Numerics\LinearCombinationFunction.cs" />
+    <Compile Include="Collections\Pathfinding\AStarWalker.cs" />
+    <Compile Include="Collections\Pathfinding\BestFirstWalker.cs" />
+    <Compile Include="Collections\Pathfinding\BidirectionalGraphWalker.cs" />
+    <Compile Include="Collections\Pathfinding\BreadthFirstWalker.cs" />
+    <Compile Include="Collections\Pathfinding\DepthFirstWalker.cs" />
+    <Compile Include="Collections\Pathfinding\GraphWalker.cs" />
+    <Compile Include="Collections\Pathfinding\GreedyWalker.cs" />
+    <Compile Include="Collections\Pathfinding\IGraphWalker.cs" />
+    <Compile Include="GameTheory\AlphaBetaSearch.cs" />
+    <Compile Include="Collections\Pathfinding\RandomizedGreedyWalker.cs" />
+    <Compile Include="Collections\Pathfinding\Search.cs" />
+    <Compile Include="Collections\Pathfinding\SmaStarWalker.cs" />
+    <Compile Include="Collections\Pathfinding\SmaStarWalker.Fringe.cs" />
+    <Compile Include="Collections\Pathfinding\UniformCostWalker.cs" />
+    <Compile Include="Collections\Pathfinding\Walk.cs" />
+    <Compile Include="Collections\Pathfinding\Walkers.cs" />
+    <Compile Include="Collections\Sets.cs" />
+    <Compile Include="Collections\WeightedEdge.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="Functions.cs" />
+    <Compile Include="Geometry\GrahamScan.cs" />
+    <Compile Include="Geometry\JarvisMarch.cs" />
+    <Compile Include="Geometry\LineSweep.cs" />
+    <Compile Include="Geometry\OfflineClosestPair2.cs" />
+    <Compile Include="Geometry\OfflineConvexHull2.cs" />
+    <Compile Include="Geometry\Point2.cs" />
+    <Compile Include="Geometry\Polygon.cs" />
+    <Compile Include="Geometry\Segment2.cs" />
+    <Compile Include="IFactory.cs" />
+    <Compile Include="Language\Automata\Automata.cs" />
+    <Compile Include="Language\Automata\FADescription.cs" />
+    <Compile Include="Language\Automata\FDADescription.cs" />
+    <Compile Include="Language\Automata\FNDADescription.cs" />
+    <Compile Include="Language\Automata\IAutomaton.cs" />
+    <Compile Include="Language\Automata\IFDATransitionFunction.cs" />
+    <Compile Include="Language\Automata\IFDAutomaton.cs" />
+    <Compile Include="Language\Automata\IFNDATransitionFunction.cs" />
+    <Compile Include="Language\Automata\IFNDAutomaton.cs" />
+    <Compile Include="Language\Automata\InteractiveFDAutomaton.cs" />
+    <Compile Include="Language\Automata\MakeAutomaton.cs" />
+    <Compile Include="Language\Automata\MappedFDATranstionFunction.cs" />
+    <Compile Include="Language\Automata\MethodFDATranstionFunction.cs" />
+    <Compile Include="Language\Automata\MethodFNDATransitionFunction.cs" />
+    <Compile Include="Language\BasicNode.cs" />
+    <Compile Include="Language\ParsingException.cs" />
+    <Compile Include="Language\Expressions\BinaryAction.cs" />
+    <Compile Include="Language\Expressions\BinaryFunction.cs" />
+    <Compile Include="Language\Expressions\ConstantAction.cs" />
+    <Compile Include="Language\Expressions\ConstantFunction.cs" />
+    <Compile Include="Language\Expressions\ExpressionBase.cs" />
+    <Compile Include="Language\Expressions\Expressions.cs" />
+    <Compile Include="Language\Expressions\IExpression.cs" />
+    <Compile Include="Language\Expressions\UnaryAction.cs" />
+    <Compile Include="Language\Expressions\UnaryFunction.cs" />
+    <Compile Include="Language\Grammars\BottomUp\ParsingAction.cs" />
+    <Compile Include="Language\Grammars\BottomUp\ActionCode.cs" />
+    <Compile Include="Language\Grammars\BottomUp\ActionGotoTable.cs" />
+    <Compile Include="Language\Grammars\BottomUp\ActionKey.cs" />
+    <Compile Include="Language\Grammars\BottomUp\Goto.cs" />
+    <Compile Include="Language\Grammars\BottomUp\GotoKey.cs" />
+    <Compile Include="Language\Grammars\BottomUp\IActionGotoTable.cs" />
+    <Compile Include="Language\Grammars\BottomUp\LrError.cs" />
+    <Compile Include="Language\Grammars\BottomUp\LrErrorType.cs" />
+    <Compile Include="Language\Grammars\BottomUp\LrItem.cs" />
+    <Compile Include="Language\Grammars\BottomUp\LrKernel.cs" />
+    <Compile Include="Language\Grammars\BottomUp\LrParserBuilder.cs" />
+    <Compile Include="Language\Grammars\BottomUp\LrState.cs" />
+    <Compile Include="Language\Grammars\BottomUp\ShiftReduceParser.cs" />
+    <Compile Include="Language\Grammars\BottomUp\SlrItem.cs" />
+    <Compile Include="Language\Grammars\Def.cs" />
+    <Compile Include="Language\Grammars\Generation\Generator.cs" />
+    <Compile Include="Language\Grammars\Generation\LSystemGenerator.cs" />
+    <Compile Include="Language\Grammars\Generation\RecursiveGenerator.cs" />
+    <Compile Include="Language\Grammars\Generation\Selector.cs" />
+    <Compile Include="Language\Grammars\Generation\Selectors.cs" />
+    <Compile Include="Language\Grammars\Grammar.cs" />
+    <Compile Include="Language\Grammars\GrammarBuilder.cs" />
+    <Compile Include="Language\Grammars\GrammarItem.cs" />
+    <Compile Include="Language\Grammars\ParameterList.cs" />
+    <Compile Include="Language\Grammars\Production.cs" />
+    <Compile Include="Language\Grammars\ProductionList.cs" />
+    <Compile Include="Language\Grammars\ProductionRule.cs" />
+    <Compile Include="Language\Grammars\Ref.cs" />
+    <Compile Include="Language\Grammars\Rule.cs" />
+    <Compile Include="Language\Grammars\Token.cs" />
+    <Compile Include="Language\Grammars\TokenStream.cs" />
+    <Compile Include="Language\Grammars\TopDown\PredictiveParser.cs" />
+    <Compile Include="Language\ILexer.cs" />
+    <Compile Include="Language\IParser.cs" />
+    <Compile Include="Language\Node.cs" />
+    <Compile Include="Language\NotMatchedException.cs" />
+    <Compile Include="Language\Parsers.cs" />
+    <Compile Include="Language\Regex\IRegexNode.cs" />
+    <Compile Include="Language\Regex\RegexBinaryNode.cs" />
+    <Compile Include="Language\Regex\RegexClosureNode.cs" />
+    <Compile Include="Language\Regex\RegexConcatNode.cs" />
+    <Compile Include="Language\Regex\RegexLeafNode.cs" />
+    <Compile Include="Language\Regex\RegexLexer.cs" />
+    <Compile Include="Language\Regex\RegexLiteralNode.cs" />
+    <Compile Include="Language\Regex\RegexParser.cs" />
+    <Compile Include="Language\Regex\RegexToken.cs" />
+    <Compile Include="Language\Regex\RegexTokenType.cs" />
+    <Compile Include="Language\Regex\RegexUnaryNode.cs" />
+    <Compile Include="Language\Regex\RegexUnionNode.cs" />
+    <Compile Include="Language\UnexpectedTokenException.cs" />
+    <Compile Include="Language\WrongTokenException.cs" />
+    <Compile Include="MethodComparer.cs" />
+    <Compile Include="NowWhatException.cs" />
+    <Compile Include="NumberTheory\ModularMath.cs" />
+    <Compile Include="NumberTheory\PascalTriangle.cs" />
+    <Compile Include="NumberTheory\Primes.cs" />
+    <Compile Include="NumberTheory\Primes16.cs" />
+    <Compile Include="Numerics\DifferentialFunction.cs" />
+    <Compile Include="Numerics\Integrator.cs" />
+    <Compile Include="Numerics\LinearSolver.cs" />
+    <Compile Include="Numerics\LeastSquaresFitting.cs" />
+    <Compile Include="Numerics\MultiStepCorrector.cs" />
+    <Compile Include="Numerics\MultiStepMethod.cs" />
+    <Compile Include="Numerics\PivotStrategy.cs" />
+    <Compile Include="Numerics\SingleStepCorrector.cs" />
+    <Compile Include="Optimization\Aproximate\BreedingFunction.cs" />
+    <Compile Include="Optimization\Aproximate\DifferentialEvolution.cs" />
+    <Compile Include="Optimization\Aproximate\GenerationFunction.cs" />
+    <Compile Include="Optimization\Aproximate\LocalSelector.cs" />
+    <Compile Include="Optimization\Aproximate\Population.cs" />
+    <Compile Include="Optimization\Aproximate\SelectionFunction.cs" />
+    <Compile Include="Optimization\Aproximate\TemperatureFunction.cs" />
+    <Compile Include="Optimization\IExactOptimizer.cs" />
+    <Compile Include="Pair.cs" />
+    <Compile Include="Predicate.cs" />
+    <Compile Include="Probabilities\BasicEvent.cs" />
+    <Compile Include="Probabilities\BinaryEvent.cs" />
+    <Compile Include="Probabilities\Collection.cs" />
+    <Compile Include="Probabilities\ComplementEvent.cs" />
+    <Compile Include="Probabilities\ConditionalEvent.cs" />
+    <Compile Include="Probabilities\Estimators.cs" />
+    <Compile Include="Probabilities\Event.cs" />
+    <Compile Include="Probabilities\Functions.cs" />
+    <Compile Include="Probabilities\IntersectionEvent.cs" />
+    <Compile Include="Probabilities\Mode.cs" />
+    <Compile Include="Probabilities\Distribution.cs" />
+    <Compile Include="Probabilities\EventData.cs" />
+    <Compile Include="Probabilities\MovingAverage.cs" />
+    <Compile Include="Probabilities\ProbabilityFunction.cs" />
+    <Compile Include="Probabilities\UnaryEvent.cs" />
+    <Compile Include="Probabilities\UnionEvent.cs" />
+    <Compile Include="Reporting\Csv\CsvMatrix.cs" />
+    <Compile Include="Reporting\Csv\CsvFile.cs" />
+    <Compile Include="Scanner.cs" />
+    <Compile Include="Serializer.cs" />
+    <Compile Include="Sorting\Compare.cs" />
+    <Compile Include="Sorting\CountingSort.cs" />
+    <Compile Include="Sorting\HeapSort.cs" />
+    <Compile Include="Sorting\ISorter.cs" />
+    <Compile Include="Sorting\MergeSort.cs" />
+    <Compile Include="Sorting\MinimumSort.cs" />
+    <Compile Include="Sorting\QuickSort.cs" />
+    <Compile Include="Sorting\Sorter.cs" />
+    <Compile Include="Sorting\Sorters.cs" />
+    <Compile Include="Benchmarks\Benchmark.cs" />
+    <Compile Include="Benchmarks\BenchmarkCollection.cs" />
+    <Compile Include="Benchmarks\BenchmarkFunction.cs" />
+    <Compile Include="Benchmarks\BenchmarkFunction.Examples.cs" />
+    <Compile Include="Benchmarks\BenchmarkResult.cs" />
+    <Compile Include="Learning\Classification\AdaboostClassifier.cs" />
+    <Compile Include="Learning\Classification\ClassifiedItem.cs" />
+    <Compile Include="Learning\Classification\Classifiers.cs" />
+    <Compile Include="Learning\Classification\FeatureClassifier.cs" />
+    <Compile Include="Learning\Classification\FeatureCount.cs" />
+    <Compile Include="Learning\Classification\FeatureTrainer.cs" />
+    <Compile Include="Learning\Classification\IClassifier.cs" />
+    <Compile Include="Learning\Classification\ITrainer.cs" />
+    <Compile Include="Learning\Classification\NaiveBayesClassifier.cs" />
+    <Compile Include="Learning\Clustering\ClustersBase.cs" />
+    <Compile Include="Learning\Clustering\IClusterer.cs" />
+    <Compile Include="Learning\Clustering\IClusters.cs" />
+    <Compile Include="Learning\Clustering\IFixedClusterer.cs" />
+    <Compile Include="Learning\Clustering\KMeansClusterer.cs" />
+    <Compile Include="Learning\Clustering\KMeansClusters.cs" />
+    <Compile Include="Collections\IBinaryTree.cs" />
+    <Compile Include="Collections\ITree.cs" />
+    <Compile Include="Collections\Tree.cs" />
+    <Compile Include="Collections\Trees.cs" />
+    <Compile Include="Debug.cs" />
+    <Compile Include="DebugLevel.cs" />
+    <Compile Include="Simulation\DiscreteEvents\DiscreteEvent.cs" />
+    <Compile Include="Simulation\DiscreteEvents\DiscreteEventArgs.cs" />
+    <Compile Include="Simulation\DiscreteEvents\DiscreteEventsSimulator.cs" />
+    <Compile Include="Simulation\DiscreteEvents\IEventProcessor.cs" />
+    <Compile Include="Probabilities\Distributions.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="AssertFailedException.cs" />
+    <Compile Include="FormattingExtensions.cs" />
+    <Compile Include="IFunction.cs" />
+    <Compile Include="ICloneable.cs" />
+    <Compile Include="Matrices.cs" />
+    <Compile Include="Matrix.cs" />
+    <Compile Include="Collections\BinaryHeap.cs" />
+    <Compile Include="Numerics\SingleStepMethod.cs" />
+    <Compile Include="Numerics\DifferentialFunctions.cs" />
+    <Compile Include="Numerics\DifferentialSolution.cs" />
+    <Compile Include="Numerics\Factorization.cs" />
+    <Compile Include="Numerics\Integrators.cs" />
+    <Compile Include="Numerics\LdlFactorization.cs" />
+    <Compile Include="Numerics\LdlSolution.cs" />
+    <Compile Include="Numerics\LinearSolution.cs" />
+    <Compile Include="Numerics\LinearSolutionType.cs" />
+    <Compile Include="Numerics\LinearSystems.cs" />
+    <Compile Include="Numerics\MultiStepCorrectors.cs" />
+    <Compile Include="Numerics\MultiStepMethods.cs" />
+    <Compile Include="Numerics\SingleStepCorrectors.cs" />
+    <Compile Include="Numerics\SingleStepMethods.cs" />
+    <Compile Include="Optimization\Aproximate\NeighborhoodFunction.cs" />
+    <Compile Include="Optimization\Aproximate\HillClimbing.cs" />
+    <Compile Include="Optimization\Aproximate\Select.cs" />
+    <Compile Include="Optimization\Aproximate\SimulatedAnnealing.cs" />
+    <Compile Include="Optimization\Exact\HomotopyEventArgs.cs" />
+    <Compile Include="Optimization\Exact\HomotopyOptimizer.cs" />
+    <Compile Include="Optimization\IOptimizer.cs" />
+    <Compile Include="Optimization\OptimizerResult.cs" />
+    <Compile Include="Optimization\OptimizerStatus.cs" />
+    <Compile Include="Probabilities\RandomEx.cs" />
+    <Compile Include="Probabilities\RandomVariable.cs" />
+    <Compile Include="Reporting\Matlab\MatlabFile.cs" />
+    <Compile Include="Reporting\Matlab\MatlabElement.cs" />
+    <Compile Include="Reporting\Matlab\MatlabVector.cs" />
+    <Compile Include="Reporting\Report.cs" />
+    <Compile Include="Reporting\ReportCollection.cs" />
+    <Compile Include="Reporting\ReportElement.cs" />
+    <Compile Include="Reporting\Tex\TexDocument.cs" />
+    <Compile Include="Reporting\Tex\TexEnvironment.cs" />
+    <Compile Include="Reporting\Tex\TextElement.cs" />
+    <Compile Include="Tools\MultiWriter.cs" />
+    <Compile Include="Vector.cs" />
+    <Compile Include="Vectors.cs" />
+    <Compile Include="Wildcard.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reporting\PlainText\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Collections\Pathfinding\SmaStarWalker.Node.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

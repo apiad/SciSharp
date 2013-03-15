@@ -1,0 +1,10 @@
+# Ignore LaTeX temporary files
+
+*.aux
+*.glo
+*.idx
+*.ilg
+*.ind
+*.log
+*.out
+*.toc

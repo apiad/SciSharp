@@ -1,0 +1,45 @@
+﻿// ============================================================================
+// File: AddMatrix.ps
+// ----------------------------------------------------------------------------
+// Description: Pixel shader used to add matrices.
+// Author: Alejandro Piad <alepiad@gmail.com>
+// ----------------------------------------------------------------------------
+
+// Output data
+RWStructuredBuffer<float> result     : register (u1);
+
+// Input data
+RWStructuredBuffer<float> left       : register (u2);
+RWStructuredBuffer<float> right      : register (u3);
+
+// Constant data
+cbuffer AddMatrixInfo                : register( b0 )
+{
+    int Rows;
+    int Cols;
+
+    // dummy
+    float2 reserved;
+}
+
+struct PS_IN
+{
+    float4 proj : SV_POSITION;
+};
+
+uint GetIndex(float2 position)
+{
+    return uint(position.x * Cols + position.y);
+}
+
+void PS( PS_IN input )
+{
+    // Get the coordinate
+    uint coord = GetIndex(input.proj.xy);
+
+    // Add the values
+    result[coord] = left[coord] + right[coord];
+
+    // As simple as that...
+    return;
+}

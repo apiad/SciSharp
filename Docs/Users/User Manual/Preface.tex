@@ -1,0 +1,129 @@
+\sct is a C\# library for scientific computing applications.
+It contains a set of frameworks for a number of areas of scientific
+computing, such as optimization, simulation, graph searching, 
+probabilities and statistics, language processing, numerical algorithms,
+computational geometry and number theory. It also provides tools for
+testing and comparison of algorithms and for the generation of 
+reports in several formats.
+
+The main goal of \sct is to provide a set of tools for
+the scientific community to develop algorithms in .NET for 
+a very broad range of applications. Despite
+being written entirely in C\# it aims to provide efficient
+implementations, based on parallel, distributed and GPU programming
+techniques. 
+
+This report describes the main functionalities built into
+the library, and provides a guide for its use and extension.
+It is by no mean a complete nor updated guide. \sct
+is always changing, and the best place to find up to date and
+extensive information on the nasty details of the library
+is on its \href{http://scientifictools.codeplex.com}{website}.
+
+The rest of the report is divided into chapters, one for each
+of the \sct main \emph{namespaces}. Each chapter builds upon
+one or more examples in a tutorial-like fashion. There are
+of course many details that escape these examples. For some
+of the most important details, footnotes or other indications will
+be given.
+
+%========================================================================
+\section*{Prerequisites}
+\addcontentsline{toc}{section}{Prerequisites}
+%========================================================================
+
+\sct is a library written in C\# for scientific computing. As
+such, this manual considers on behalf of the reader a working
+understanding both of the C\# language and the scientific topics
+covered by the library. 
+
+The algorithms and data structures implemented in the library
+are in most cases well known in the scientific community.
+In such cases, the first time a given algorithm, data structure
+or any other important concept is mentioned in this manual, a
+reference will be provided to the corresponding 
+\href{http://en.wikipedia.org}{Wikipedia} page. All non-standard
+modifications will be explained in detail proportional to
+how strange or new is the given modification, and when possible
+references will be provided from the corresponding papers or
+websites.
+
+%========================================================================
+\section*{About the Source Code}
+\addcontentsline{toc}{section}{About the Source Code}
+%========================================================================
+
+All code used throughout the manual is written in C\#, adhering
+to the style used in by the developers of the library. Being a 
+.NET library, all functionality can be used in any CLR compliant
+language. Most the examples used in the manual are shipped
+with the source code for the library. 
+Source code will be formatted in \verb|monospace| font, with
+the corresponding syntax highlight.
+
+The \sct library has been designed following modern
+design patterns and coding styles. Throughout the library we have
+tried to be consistent with a unified style, which will be used in
+the code examples for this manual. Being a scientific library, we
+have tried also to provide support for some flavoured syntax styles
+widely used in some scientific packages, such as Matlab and Octave.
+We have also tried to supply a syntax as close as possible to that
+used by academicians in the corresponding areas.
+
+We have implemented this syntax sugar with heavy use of operators
+overloading and other fluid interfaces techniques. This means 
+that there are almost always two ways of doing things, with
+the usual C\# syntax (dot notation and such) and with the flavoured
+syntax which may involve using some strange operators and 
+method names, in order to get a code that looks familiar
+to the mathematician eye. 
+
+We have designed the library this way because we feel it is
+more natural for the scientist, but it could be weird for the
+programmer used to the clean dot notation syntax. If you ever
+feel uncomfortable using the flavoured syntax, you can
+always find a way of doing the same thing using standard
+C\# syntax. 
+
+We particularly prefer the syntax sugar
+\footnote{There is a common joke that says: \emph{Syntax sugar
+causes cancer of the semicolon}.} whenever possible, because
+we designed the library this way, it has become a
+common language for the library developers, and in the code examples
+you'll find it anywhere. In any case, in this manual we will
+always provide hints of how to circumvent the syntax sugar
+in favour of a more C\#-ist syntax.
+
+%========================================================================
+\section*{What this Manual Is Not}
+\addcontentsline{toc}{section}{What this Manual Is Not}
+%========================================================================
+
+This manual is \textbf{not} a reference for algorithms and
+data structures. You will not find implementation details for the
+algorithms, nor proves of asymptotic complexity, or any other
+theoretical details of the implemented tools, other than the very
+basic definitions.
+
+This manual does \textbf{not} explain which algorithm or technique
+is better in which case, nor provides comparisons between algorithms 
+other than (perhaps) some information about our particular implementation
+that we think you may need to know. For instance, we will never say
+that \emph{QuickSort} is faster than \emph{MergeSort} (well, I just did, but
+that is not the point). We could say, however, that \textbf{our} \emph{QuickSort}
+implementation is faster than \textbf{our} \emph{MergeSort} implementation.
+
+You \textbf{will} find, however, links to
+relevant places where you can start doing some research
+about the techniques implemented. You can also look at the
+source code in any moment, where you'll find all implementation
+details you want (is all in there, isn't it?). Also, the
+examples have been designed trying to choose interesting or at least
+classic problems that can be solved using the corresponding
+techniques. 
+
+But always keep in mind that we are just giving you
+a hammer, it is your choice how to use it: to build a house,
+to bake some cookies, or to break someone's head. The examples
+we provide will almost always be about house building, in fewer
+cases about cooking, but \emph{almost} never about head smashing. 

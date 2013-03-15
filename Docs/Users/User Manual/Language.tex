@@ -1,0 +1,88 @@
+The \texttt{Language} \emph{namespace} contains a framework
+for the definition, parsing and processing of languages,
+built around the concepts of grammars, automata and regular expressions.
+
+%========================================================================
+\section{Grammars}
+%========================================================================
+
+In the \texttt{Grammars} namespace you'll find an embedded DSL for
+the definition of context-free attributed grammars. The basic class
+is the \typeref{Grammar<T>}{ScientificTools.Language.Grammars.Grammar`1} 
+class (and its non-generic counterpart \typeref{Grammar}{ScientificTools.Language.Grammars.Grammar}).
+This class is used to define a context-free grammar whose rule attributes
+are defined by the generic parameter type.  
+
+The grammar building is based on types that encapsulates the concepts
+of non-terminal and terminal symbols, with defined operations for
+the construction of production rules. On top of this classes, making
+a heavy use of operator overloading and other fluid interfaces techniques
+you'll find an embedded DSL which aims to provide a syntax as near as
+possible to the EBNF notation used in the formal languages community.
+
+To use this DSL, you only interact directly with the 
+\typeref{Grammar<T>}{ScientificTools.Language.Grammars.Grammar`1} class.
+
+%------------------------------------------------------------------------
+\subsection{Defining Symbols and Productions}
+%------------------------------------------------------------------------
+
+Let's begin with the construction of a parser for the very simple language
+$L = \{ w = a^n b^n | n > 0 \}$. This is a classic context free language 
+that will serve as base to show how to define symbols and productions.
+Since we don't require the use of attributes, we'll be using the non-generic
+\typeref{Grammar}{ScientificTools.Language.Grammars.Grammar} class.
+
+We first need a \typeref{Grammar}{ScientificTools.Language.Grammars.Grammar} instance,
+which is created simply by calling its constructor.
+
+\begin{verbatim}
+var G = new Grammar();
+\end{verbatim}
+
+Now that we have a grammar, let's define the symbols (both non-terminal and terminals).
+Non-terminal symbols are called \emph{rules}, while terminal symbols are called \emph{tokens}.
+To define symbols we can use the methods \methodref{ScientificTools.Language.Grammars.Grammar`1}{Rule}
+and \methodref{ScientificTools.Language.Grammars.Grammar`1}{Token} respectively.
+
+\begin{verbatim}
+var S = G.Rule("S");
+var a = G.Token('a');
+var b = G.Token('b');
+\end{verbatim}
+
+In the case of rules, you can pass in a name as an argument, just for debugging
+purposes. In the case of tokens you need to provide either a simple \code{char}
+or a \code{string} which will be the regular expression used to parse
+the token. You can provide an optional name as well, but when you define
+tokens using a \code{char} it is used for the name too.
+
+Now it's time to define the production rules. For this very simple grammar there
+is only very simple rule.
+Productions are defined using the \code{\%=} operator
+for definition (like the arrow $\rightarrow$ in EBNF)
+\footnote{We would have prefer to use the \code{>>} operator, but unfortunately 
+it can only be redefined with an \code{int} argument in \cs}, the \code{+} operator
+for symbol concatenation
+\footnote{In EBNF symbol concatenation is defined just by placing symbols
+side of each other, but this is not possible in \cs}, 
+and the \code{|} operator for branches, just like in EBNF.
+
+\begin{verbatim}
+S %= a + S + b | a + b;
+\end{verbatim}
+
+Now that the grammar is complete, we can test it by building a parser for it
+or generating a lot of strings out of it (more on these topics later).
+
+You could have skipped the definition of tokens \verb|a| and \verb|b|,
+and use strings directly in the definition for the production, like this:
+
+\begin{verbatim}
+S %= "a" + S + "b" | "ab";
+\end{verbatim}
+
+This way you don't have to define dummy token just for a character or
+a string. The \typeref{Grammar}{ScientificTools.Language.Grammars.Grammar} class
+takes care of creating the token. Also, if you use the same string more than once,
+you'll get the same \typeref{Token}{ScientificTools.Language.Grammars.Token`1} instance.

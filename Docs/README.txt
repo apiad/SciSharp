@@ -29,4 +29,4 @@ Docs
 
 This folder contains source material (.tex, .html, .mkdown, etc.) 
 and compiled files (.pdf, .chm, etc.) for the
-official SciSharp documentation. 
+official SciSharp documentation (after building).  

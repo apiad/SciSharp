@@ -1,4 +1,4 @@
-# Ignore LaTeX temporary files
+# Ignore LaTeX temporary and output files
 
 *.aux
 *.glo
@@ -8,3 +8,4 @@
 *.log
 *.out
 *.toc
+*.pdf

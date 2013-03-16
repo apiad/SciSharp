@@ -27,29 +27,15 @@ It currently encompasses the following areas:
 Installation
 ------------
 
-To install SciSharp, simply run the corresponding installer
-(x.y.z is the corresponding version number):
+Currently there is no installation package for for SciSharp,
+instead it is distributed in two forms: binaries and source.
+The binary packing can be used to directly reference the
+libraries on your project. 
 
- * On Windows: SciSharp-x86-x.y.z.msi
-               SciSharp-x64-x.y.z.msi
-			   
- * On Linux:   # dpkg -i SciSharp-x86-x.y.z.deb
-               # dpkg -i SciSharp-x64-x.y.z.deb
-			   
-	NOTE: On Linux you must have Mono to install
-	      and use SciSharp.
+Compiled binaries can be obtained for both Windows and Linux,
+and different platforms from:
 
-This procedure will install the project libraries in the GAC
-and create shortcuts to the utilities, examples and documentation,
-where your operating system demands:
-
- * On Windows: C:\Program Files\SciSharp          <-- x64 version
-               C:\Program Files (x86)\SciSharp    <-- x86 version
- 
- * On Linux: /usr/lib/scisharp/                   <-- libraries
-             /usr/doc/scisharp/                   <-- documentation
-			   
-After installation, check the documentation and examples.
+	http://apiad.net/~apiad/SciSharp/Bin/Libraries
 
 			   
 Source Code
@@ -58,24 +44,40 @@ Source Code
 Source is available under the MIT License on the following URLs:
 
 Plain download (zip file):
-	http://github.com/AlejandroPiad/SciSharp/master.zip
+	https://github.com/AlejandroPiad/SciSharp/zipball/master.zip
 
-Plain download (tar file)
-	http://github.com/AlejandroPiad/SciSharp/master.tar.gz
+Plain download (tar file):
+	https://github.com/AlejandroPiad/SciSharp/tarball/master.tar.gz
 	
-Clone with Git (read-only)
-	git clone http://github.com/AlejandroPiad/SciSharp.git
+Clone with Git (read-only):
+	git clone https://github.com/AlejandroPiad/SciSharp.git
+
+Alternative clone locations:
+	http://apiad.net/~apiad/SciSharp/
 	
 To build the project you will need a C# 4.0 compatible
 compiler. On Windows you can use Visual Studio 2012,
 SharpDevelop, or any other compatible IDE.
 On Linux we recommend using MonoDevelop.
 
+The branch <master> is always in a mostly stable status.
+Altough it may of course contain bugs, features are only
+commited to <master> after a thorought testing. On the
+other hand, to try the latest features, checkout the
+<develop> branch, where features are commited as they are
+finished, before enough testing has been done. This is a 
+mostly unstable branch, so beware. Features in a development
+status (not completed) generally have their own branch,
+named <feature-#issue> where #issue correspond to an 
+issue number on the bug tracking list. If you want to try
+these features, or colaborate in them, checkout the
+corresponding branch.
+
 	
 Colaboration
 ------------
 	
 For colaboration, bug reporting, and updates, please visit
-http://github.com/AlejandroPiad/SciSharp/
+https://github.com/AlejandroPiad/SciSharp/
 
 You can contact the project manager on <scisharp@apiad.net>

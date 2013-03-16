@@ -68,8 +68,8 @@ other hand, to try the latest features, checkout the
 finished, before enough testing has been done. This is a 
 mostly unstable branch, so beware. Features in a development
 status (not completed) generally have their own branch,
-named <feature-#issue> where #issue correspond to an 
-issue number on the bug tracking list. If you want to try
+named <feature-...> with a sensible description of
+the feature being implemented. If you want to try
 these features, or colaborate in them, checkout the
 corresponding branch.
 

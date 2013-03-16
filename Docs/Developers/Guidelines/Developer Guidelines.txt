@@ -164,6 +164,17 @@ will merged into <master>. New releases will sprout from <master>
 at any given point, and the release branch will only be used to
 fully polish any remaining bugs.
 
+Feature branches should be named <feature-xyz> where xyz is
+a sensible (and short) name that describes the feature. 
+Bug fixup branches should be named <bug-#issue> where 
+#issue is the number of the reported issue in the bug
+tracking list. If you find an issue and code a solution very
+fast, before reporting it, then please before sending the
+patch or pull request fill in the bug report and rename the
+branch accordingly, just for the sake of organization, unless
+as said before it is a very small bug with just one commit
+that can be fast-forwarded into <develop>.
+
 If you have a very small fixup (such as a missing null check)
 you can code it directly into <develop> and make a single commit.
 We will very probably accept it, and thank for it.

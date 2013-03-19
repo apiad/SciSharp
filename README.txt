@@ -2,7 +2,7 @@ SciSharp - Scientific Computing for .NET
 ========================================
 
 SciSharp is a set of libraries and tools for .NET 4 tailored for
-scientific computing. It includes one main library (SciSharp.dll)
+scientific computing. It includes one main library (`SciSharp.dll`)
 with the core API, a few smaller libraries which provide alternative
 implementations that might not work on your system (for instance,
 GPU acceleration), a few utilities and a lot of examples.
@@ -35,12 +35,12 @@ libraries on your project.
 Compiled binaries can be obtained for both Windows and Linux,
 and different platforms from:
 
-	http://apiad.net/~apiad/SciSharp/Bin/Libraries
+	http://apiad.net/~apiad/git/SciSharp/Bin/Libraries
 
 Third party libraries and software can be obtained in compiled
 form from:
 
-	http://apiad.net/~apiad/SciSharp/Contrib/
+	http://apiad.net/~apiad/git/SciSharp/Contrib/
 
 All third party software is subject to its own license.
 We only include third party contributions with an OSI approved
@@ -62,7 +62,7 @@ Clone with Git (read-only):
 	git clone https://github.com/AlejandroPiad/SciSharp.git
 
 Alternative clone locations:
-	http://apiad.net/~apiad/SciSharp/
+	http://apiad.net/~apiad/git/SciSharp/
 	
 To build the project you will need a C# 4.0 compatible
 compiler. On Windows you can use Visual Studio 2012,
@@ -90,3 +90,31 @@ For colaboration, bug reporting, and updates, please visit
 https://github.com/AlejandroPiad/SciSharp/
 
 You can contact the project manager on <scisharp@apiad.net>
+
+You can subscribe the following mailing lists to experience
+a wide range of colaboration:
+
+Big announcements (releases, news, etc.):
+	[scisharp@lists.apiad.net]
+	(mailto:scisharp@lists.apiad.net)
+
+This list is read-only and we'll only send very sparse mails
+about major developments news, milestone hits and releases.
+
+Developers mailing list:
+	[scisharp-develop@lists.apiad.net]
+	(mailto:scisharp-develop@lists.apiad.net)
+
+This list is where the development discussions take place.
+If you want to stay up-to-date with the newest features,
+and add your voice to the quorum, this is the place. This 
+list requires no subscription to send a comment, but
+the first mail is always moderated.
+
+Patches list:
+	[scisharp-patches@lists.apiad.net]
+	(mailto:scisharp-patches@lists.apiad.net)
+
+Send your patches to this list with a brief explanation
+to get them merged into <develop>, if you prefer to bypass
+the standard Github <pull-request> method.

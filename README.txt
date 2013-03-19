@@ -37,6 +37,15 @@ and different platforms from:
 
 	http://apiad.net/~apiad/SciSharp/Bin/Libraries
 
+Third party libraries and software can be obtained in compiled
+form from:
+
+	http://apiad.net/~apiad/SciSharp/Contrib/
+
+All third party software is subject to its own license.
+We only include third party contributions with an OSI approved
+license.
+
 			   
 Source Code
 -----------
@@ -68,7 +77,7 @@ other hand, to try the latest features, checkout the
 finished, before enough testing has been done. This is a 
 mostly unstable branch, so beware. Features in a development
 status (not completed) generally have their own branch,
-named <feature-...> with a sensible description of
+named <feature-xyz> with a sensible description of
 the feature being implemented. If you want to try
 these features, or colaborate in them, checkout the
 corresponding branch.

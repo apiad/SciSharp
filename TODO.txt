@@ -52,6 +52,7 @@ or rewritten from (in) this list.
 ** Quasi-random generators
 ** Other pseudo-random generators (besides `System.Random`)
 ** Standard hypothesis tests
+** Classic probability framework
 
 * Time-based simulation framework
 
@@ -74,7 +75,7 @@ or rewritten from (in) this list.
 * Alternative algebraic operation implementations
 ** GPU implementation (different frameworks: DX, OpenCL, CUDA)
 ** TPL implementation
-** Sparse matrix implementation
+** Sparse structures
 
 * Documentation
 ** User manual

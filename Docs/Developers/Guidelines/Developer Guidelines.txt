@@ -179,6 +179,17 @@ If you have a very small fixup (such as a missing null check)
 you can code it directly into <develop> and make a single commit.
 We will very probably accept it, and thank for it.
 
+If necesary, and in order to not disrupt the coding process,
+big documentation changes can be granted a branch of their
+own, just as with features. The name should be <doc-xyz>,
+again with a sensible explanation of the documentation
+change. Documentation changes for new features should be done within
+the same <feature-xyz> branch, as the feature it refers to,
+in order to keep documentation updated wherever the corresponding
+feature goes. This way, when backporting features or bug fixes
+the corresponding documentation should be correctly barckported
+as well.
+
 Developers that wish to will be granted write access to the
 repository after sending a few patches, just so that we can confirm
 your good will. It`s not a matter of distrust, but a spammer with
@@ -196,7 +207,7 @@ The project uses a standard `major.minor.micro` versioning format,
 with the following semantics:
 
 * Changes in the micro number indicate bug fixes or any other change
-  that doesn't change any public interface or any publicly preceivable
+  that doesn't change any public interface or any publicly perceivable
   semantic. It should provide forward and backward transparent
   compatibility. 
 
@@ -225,12 +236,20 @@ previously said, bugfixes will not be granted a version number
 (since we expect to have so many of them). Once version `1.0.0` is 
 reached, the above instructions will take place.
 
+We will only keep an official release (for the time being), to
+simplify the mantainance process. Once a new release is published,
+the old release will be no longer supported, unless some developer
+gratefully takes care of it.
+
+We will do try to release very often, at least until we reach
+version `1.0.0`. 
+
 
 Third Party Software
 --------------------
 
 When needed, third party libraries or software can be used to provide
-extra functionality. That said, the main library (SciSharp.dll) 
+extra functionality. That said, the main library (`SciSharp.dll`) 
 which provides all the core functionality should have no third party
 dependencies. Specifically, we will not use third party libraries 
 which provide algorithms or tools similar to our own, nor will we

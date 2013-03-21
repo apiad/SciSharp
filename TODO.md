@@ -2,7 +2,7 @@ SciSharp - Scientific Computing for .NET
 ========================================
 
 SciSharp is a set of libraries and tools for .NET 4 tailored for
-scientific computing. It includes one main library (SciSharp.dll)
+scientific computing. It includes one main library (`SciSharp.dll`)
 with the core API, a few smaller libraries which provide alternative
 implementations that might not work on your system (for instance,
 GPU acceleration), a few utilities and a lot of examples.
@@ -34,55 +34,47 @@ bug tracking section at [Github](https://github.com/AlejandroPiad/SciSharp).
 
 This list includes long term ideas that we should strive for, as
 a general guide to both users and developers on where is SciSharp
-going. Please only add items to this list after a conciouss discussion
-in the [discussion list](https://groups.google.com/scisharp).
+going. Please only add items to this list after a conscious discussion
+in the [discussion list](https://lists.apiad.net/scisharp).
 Some of the items of this list will eventually become individual
 features that will be tracked down on the bugs list, and removed
 or rewritten from (in) this list.
 
 * Collections
-** Unified interfaces design
-** Graph representations
-** B-Tree variants
-** Heaps
-
+ * Unified interfaces design
+ * Graph representations
+ * B-Tree variants
+ * Heaps
 * Statistics and probabilities
-** Redesign the `RandomEx` class to separate random generation
+ * Redesign the `RandomEx` class to separate random generation
    from the different distributions
-** Quasi-random generators
-** Other pseudo-random generators (besides `System.Random`)
-** Standard hypothesis tests
-** Classic probability framework
-
+ * Quasi-random generators
+ * Other pseudo-random generators (besides `System.Random`)
+ * Standard hypothesis tests
+ * Classic probability framework
 * Time-based simulation framework
-
 * Optimization
-** Metaheuristics framework
-** Quasi-newtonian methods
-** Linear programming methods (simplex, branch-and-x)
-
+ * Heuristics framework
+ * Quasi-Newton methods
+ * Linear programming methods (simplex, branch-and-x)
 * Language processing
-** Natural language framework (preprocesing, feature extraction)
-** Other parser generators (LL, GLR, SLR)
-** Language generation tools (natural and formal)
-** Grammar transformation and validation tools
-
+ * Natural language framework (preprocessing, feature extraction)
+ * Other parser generators (LL, GLR, SLR)
+ * Language generation tools (natural and formal)
+ * Grammar transformation and validation tools
 * Machine learning
-** Classification algorithms
-** Clustering algorithms
-** Regression algorithms
-
+ * Classification algorithms
+ * Clustering algorithms
+ * Regression algorithms
 * Alternative algebraic operation implementations
-** GPU implementation (different frameworks: DX, OpenCL, CUDA)
-** TPL implementation
-** Sparse structures
-
+ * GPU implementation (different frameworks: DX, OpenCL, CUDA)
+ * TPL implementation
+ * Sparse structures
 * Documentation
-** User manual
-** Developer documentation
-** Tutorials and examples
-
+ * User manual
+ * Developer documentation
+ * Tutorials and examples
 * Automation
-** Automated and unified build for the framework and documentation
-** Unit testing for the entire library
-** Profiling (performance) testing for the entire library
+ * Automated and unified build for the framework and documentation
+ * Unit testing for the entire library
+ * Profiling (performance) testing for the entire library

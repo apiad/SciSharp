@@ -2,7 +2,7 @@ SciSharp - Developer Guidelines
 ===============================
 
 SciSharp is a set of libraries and tools for .NET 4 tailored for
-scientific computing. It includes one main library (SciSharp.dll)
+scientific computing. It includes one main library (`SciSharp.dll`)
 with the core API, a few smaller libraries which provide alternative
 implementations that might not work on your system (for instance,
 GPU acceleration), a few utilities and a lot of examples.
@@ -24,29 +24,29 @@ It currently encompasses the following areas:
  * Simulation
  
 
-Colaboration
+Collaboration
 ------------
 
-All interested developers are welcome to colaborate. 
-The standard medium of colaboration is the Github repository at:
-http://github.com/AlejandroPiad/SciSharp.git
+All interested developers are welcome to collaborate. 
+The standard medium of collaboration is by cloning from
+[the Github repository](https://github.com/AlejandroPiad/SciSharp.git).
 
-The source code is versioned using Git. If you want to colaborate
+The source code is controlled using Git. If you want to collaborate
 you'll need to know at least enough of Git to be able to create your
 commits and submit them as patches. Patches can be send either
-through Github <pull request> feature or as a mail attachement
-to <scisharp@apiad.net>. Please format patches using the Git
+through Github `pull request` feature or as a mail attachment
+to <scisharp-patches@lists.apiad.net>. Please format patches using the Git
 tools, and include enough information in the pull request or mail
 to make a general idea of the patch content.
 
-Colaboration can be in the form of (compilable) source code,
-but also by writting examples, tutorials, or documentation in
+Collaboration can be in the form of (compilable) source code,
+but also by writing examples, tutorials, or documentation in
 general, and by providing services such as packaging and deployment.
 
 Even if you are not a developer with expertise in the areas the 
 project covers, such that you cannot write a new algorithm or 
-data structure, you can still colaborate by using the library, and
-writting documentation or examples to help others learn the how-to's.
+data structure, you can still collaborate by using the library, and
+writing documentation or examples to help others learn the how-to.
 
 
 Coding Guidelines
@@ -56,70 +56,74 @@ Source code is written in C# using most of the standard coding
 rules of the .NET community. To clarify, basic guidelines are
 given here. If in doubt, check the existing source code, or ask
 one of the older developers. All (compilable) source code is
-located in the Source/ folder. Project wide solutions are located
+located in the `Source/` folder. Project wide solutions are located
 in this folder root. 
 
 Projects are located in their own folder if they are
-a primary output (such as the SciSharp project itself that generates
-the main library, or the SciSharp.Console project). Smaller or 
+a primary output (such as the `SciSharp` project itself that generates
+the main library, or the `SciSharp.Console` project). Smaller or 
 secondary projects are grouped inside a folder with a common name,
-such as the Source/Implementation/ folder which contains the projects
+such as the `Source/Implementation/` folder which contains the projects
 for alternative implementations to base classes (such as GPU-enabled
 algebraic operations) which have stronger requirements than the
 main library (like having a GPU, or using third-party libraries).
 
 Inside projects, all first level members (classes, enums, delegates)
 should have it's own .cs file, named like the member's name. Where
-necessary, a class can be made partial and split accross more than 
+necessary, a class can be made partial and split across more than 
 one file, and secondary files should be named with the class name
 plus some extra information that describes the partial content.
 For example, the Primes class (which contains static methods for
-primality generation and testing) is splitted in two files: Primes.cs
-where all methods are, and Primes16.cs which contains a static
+primality generation and testing) is split in two files: `Primes.cs`
+where all methods are, and `Primes16.cs` which contains a static
 array with all 16-bit primes. Such a big array would clutter the
-Primes.cs file, and potentially slowdown IDE tools which tend to
+`Primes.cs` file, and potentially slowdown IDE tools which tend to
 reformat a source file when typing.
 
 A project's file tree should exactly resemble the internal namespace
 layout, with namespaces mapping to folders, and keeping the same
 nesting.
 
-Naming guidelines:
+### Naming guidelines: ###
+ 
  * Classes, delegates and enums, public members (properties, methods
    and fields), non-private static members, and constants should be
-   named in UpperCamelCase.
+   named in `UpperCamelCase`.
  * Private fields (instance and static) should be named in 
-   lowerCamelCase.
- * Type argument for generic types should be named in UpperCamelCase 
-   with a 'T' prepended, that is TUpperCamelCase.
- * Interfaces should be named in UpperCamelCase with an 'I' 
-   prepended, that is IUpperCamelCase.
- * In general, no underscores (_) should be used in naming, EXCEPT 
-   for enabling fluid interfaces features that ``look'' better with 
+   `lowerCamelCase`.
+ * Type argument for generic types should be named in `UpperCamelCase`
+   with a `T` prepended, that is `TUpperCamelCase`.
+ * Interfaces should be named in `UpperCamelCase` with an `I` 
+   prepended, that is `IUpperCamelCase`.
+ * In general, no underscores (`_`) should be used in naming, **except** 
+   for enabling fluid interfaces features that *look* better with 
    such syntax.
    
-Comments:
+### Comments: ###
+
  * All definitions (public and non-public) should have the 
-   corresponding XML comments. At least try to include <summary/>,
-   all the <param .../> and the <returns/> tags.  
+   corresponding XML comments. At least try to include `<summary/>`,
+   all the `<param .../>` and the `<returns/>` tags.  
  * The source itself should be correctly commented as it is widely
    accepted that source code is read many more times than it is
    written. For all non-obvious lines of code, please include 
-   sensible comments that explain the intended behaviour.
+   sensible comments that explain the intended behavior.
    
- NOTE: For descriptions that require a technical or academic language
-       it is ok and even encouraged to use LaTeX math markup in
-       the comments, both XML comments and inline comments. The
-       tools for automatic documentation generation should correctly
-       deal with LaTeX source. This includes notations like $O(n)$
-       and similar.
+    **NOTE**: For descriptions that require a technical or academic language
+    it is OK and even encouraged to use LaTeX math markup in
+    the comments, both XML comments and inline comments. The
+    tools for automatic documentation generation should correctly
+    deal with LaTeX source. This includes notations like $O(n)$
+    and similar.
 
-Testing guidelines: Please do your best effort to include unit tests
+### Testing guidelines: ###
+
+Please do your best effort to include unit tests
 that cover your contribution's functionality. Unit tests should be
-organized in projects in the Source/Testing/ folder. Tests for a 
+organized in projects in the `Source/Testing/` folder. Tests for a 
 specific class (or related group of classes that implement the same
-feature) should be contained in a source file named XYZTest.cs,
-where XYZ is a sensible name that describes the tested features
+feature) should be contained in a source file named `XYZTest.cs`,
+where `XYZ` is a sensible name that describes the tested features
 (most commonly the tested class name). Tests are coded using the
 standard .NET 4.0 testing framework, and should follow the standard
 guidelines. Please do name tests with a name long enough to state the
@@ -127,8 +131,8 @@ intended testing result. Group different test classes in projects
 according to the tested feature relations. 
 
 As an example, all tests for the library collections are located in
-the /Testing/SciSharp.Testing.Collections project. The tests for
-the RandomizedHeap class are grouped in the RandomizedHeapTests class.
+the `/Testing/SciSharp.Testing.Collections` project. The tests for
+the `RandomizedHeap` class are grouped in the `RandomizedHeapTests` class.
 
 Documentation is written in different formats, according
 to the desired output and intended audience. Big manuals are written
@@ -136,15 +140,15 @@ in LaTeX, Online documentation is written in HTML format (that is,
 you can generate it with any tool you want that produces HTML), and
 small, always changing instructions such as README files, and these
 guidelines, are written in plain ASCII text, following the Markdown
-markup language. All documentation source is located in the Docs/ 
+markup language. All documentation source is located in the `Docs/` 
 folder.
 
 
 Branching Model
 ---------------
 
-The source code is versioned using Git. There are two main branches,
-named <master> and <develop>. There should be additional branches
+The source code is controlled using Git. There are two main branches,
+named `master` and `develop`. There should be additional branches
 for each release, feature or bug fix that requires more than one 
 commit.
 
@@ -154,90 +158,94 @@ a logical change in the source code or documentation. A logical
 change is not necessary a new feature or a bug fix, these could
 require a lot of commits. If you are going to implement a new
 feature, or fix a bug that is not trivial, create a new branch and
-code the entire feature or fixup there. Then submit it as a patch,
-and we'll look at it, and merge it to <develop> once it is completed.
+code the entire feature or fix-up there. Then submit it as a patch,
+and we'll look at it, and merge it to `develop` once it is completed.
 
-Completed doesn't mean fully tested though, <develop> might have code
+Completed doesn't mean fully tested though, `develop` might have code
 that doesn't work, but at least it means that you think the feature
-or fixup is completed. Once it has been sanitized and checked it 
-will merged into <master>. New releases will sprout from <master>
+or fix-up is completed. Once it has been sanitized and checked it 
+will merged into `master`. New releases will sprout from `master`
 at any given point, and the release branch will only be used to
-fully polish any remaining bugs.
+fully polish any remaining bugs. Release branches should be named
+`release-x.y.z` for the corresponding version. Tags should be
+added in the release branch to mark the release schedule (for
+example `version-x.y.z-alpha` or `version-x.y.z-rc1`).
 
-Feature branches should be named <feature-xyz> where xyz is
+Feature branches should be named `feature-xyz` where `xyz` is
 a sensible (and short) name that describes the feature. 
-Bug fixup branches should be named <bug-#issue> where 
-#issue is the number of the reported issue in the bug
+Bug fixup branches should be named `bug-#issue` where 
+`#issue` is the number of the reported issue in the bug
 tracking list. If you find an issue and code a solution very
 fast, before reporting it, then please before sending the
 patch or pull request fill in the bug report and rename the
 branch accordingly, just for the sake of organization, unless
 as said before it is a very small bug with just one commit
-that can be fast-forwarded into <develop>.
+that can be fast-forwarded into `develop`.
 
-If you have a very small fixup (such as a missing null check)
-you can code it directly into <develop> and make a single commit.
+If you have a very small fix-up (such as a missing null check)
+you can code it directly into `develop` and make a single commit.
 We will very probably accept it, and thank for it.
 
-If necesary, and in order to not disrupt the coding process,
+If necessary, and in order to not disrupt the coding process,
 big documentation changes can be granted a branch of their
-own, just as with features. The name should be <doc-xyz>,
+own, just as with features. The name should be `doc-xyz`,
 again with a sensible explanation of the documentation
-change. Documentation changes for new features should be done within
-the same <feature-xyz> branch, as the feature it refers to,
+change. Documentation changes or additions for new features 
+should be done within the same `feature-xyz` branch, 
+as the feature it refers to,
 in order to keep documentation updated wherever the corresponding
-feature goes. This way, when backporting features or bug fixes
-the corresponding documentation should be correctly barckported
+feature goes. This way, when back-porting features or bug fixes
+the corresponding documentation should be correctly back-ported
 as well.
 
 Developers that wish to will be granted write access to the
 repository after sending a few patches, just so that we can confirm
-your good will. It`s not a matter of distrust, but a spammer with
+your good will. It's not a matter of distrust, but a spammer with
 right access to the repository would be a disaster.
 
 
-Versioning Semantics
+Version Semantics
 --------------------
 
 All executable output directly generated by the project (libraries
-and applications) should use the same versioning scheme, and
+and applications) should use the same version scheme, and
 ideally the same version number (to reduce confusion).
 
-The project uses a standard `major.minor.micro` versioning format,
+The project uses a standard `major.minor.micro` version format,
 with the following semantics:
 
-* Changes in the micro number indicate bug fixes or any other change
+* Changes in the `micro` number indicate **bug fixes** or any other change
   that doesn't change any public interface or any publicly perceivable
   semantic. It should provide forward and backward transparent
-  compatibility. 
+  compatibility.
 
-* Changes in the minor number indicate new features and *additions*
-  to the public interfaces. It should provide backward compatibilty.
+* Changes in the `minor` number indicate new features and **additions**
+  to the public interfaces. It should provide backward compatibility.
   If a new feature needs to change some interface, then the old 
   interface should still be available (for older code to correctly
   compile) and with the corresponding semantics. Such deprecated
-  interfaces should be marked as `Deprecated` and removed in the
-  next major change.
+  interfaces should be marked with a `DeprecatedAttribute` 
+  and removed in the next `major` change.
 
-* Changes in the major number indicate a whole redesign of public
+* Changes in the `major` number indicate a whole redesign of public
   interfaces that might break backward compatibility.
 
 *Alpha*, *Beta* and *RC* versions will be provided (as many
-as necesary) for each release, as bugs are discovered and fixed.
+as necessary) for each release, as bugs are discovered and fixed.
 
-**NOTE**:
+#### NOTE ####
 
-Until version `1.0.0` is reached, the previous versioning scheme is
-shifted one position to the right, and the bugfix number is dropped.
+Until version `1.0.0` is reached, the previous version scheme is
+shifted one position to the right, and the bug-fix number is dropped.
 This means that all `0.minor.micro` versions use the minor version 
 number to mark compatibility breaking changes, and the micro number 
 to mark new features which preserve backward compatibility. As 
-previously said, bugfixes will not be granted a version number 
+previously said, bug-fixes will not be granted a version number 
 (since we expect to have so many of them). Once version `1.0.0` is 
 reached, the above instructions will take place.
 
 We will only keep an official release (for the time being), to
-simplify the mantainance process. Once a new release is published,
+simplify the maintenance process. Once a new release is published,
 the old release will be no longer supported, unless some developer
 gratefully takes care of it.
 
@@ -268,8 +276,8 @@ implementation, that albeit a lot slower, is fully functional.
 
 Third party software needs to be licensed in such a way that allows
 us to distribute their compiled binaries (or source, given the case)
-with our own license. In general, any OSI aproved license should
-suffice. Third party libraries will go into the Contrib/ folder
+with our own license. In general, any OSI approved license should
+suffice. Third party libraries will go into the `Contrib/` folder
 to be distributed with the source code. They will always be 
 included in the repository, to ensure that all clones have the
 correct version. They should be included with all the 
@@ -286,3 +294,13 @@ If you think you have and idea we might be interested, let us know.
 If you can, code it yourself and we will very probably include it,
 even if we might make some changes to adapt it to the library's
 coding standards, and such.
+
+
+Copyright
+---------
+
+All the SciSharp products (source code, compiled binaries, documentation, examples, tools) are released under the MIT Software License, meaning the
+project is and will always be open source. We will not accept copyrighted,
+patented or otherwise certified contributions that are incompatible with
+the open source initiative and spirit. Please refrain from adding 
+copyright comments in the source code or any other part of your contribution.

@@ -26,7 +26,7 @@ namespace SciSharp.Examples.ExpressionsGrammar
             Token<ExpressionNode> lp = G.Token('(');
             Token<ExpressionNode> rp = G.Token(')');
             Token<ExpressionNode> cons = G.Token("const", @"[123456789]\d*");
-            // You can also define tokes by regexes
+            // You can also define tokens by regexes
             // The name is for debugging purposes
 
             // Definition of productions

@@ -8,7 +8,7 @@ using System.Resources;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("SciSharp")]
-[assembly: AssemblyDescription("Scientific computing tools for .NET 4")]
+[assembly: AssemblyDescription("Scientific Computing for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("University of Havana")]
 [assembly: AssemblyProduct("SciSharp")]

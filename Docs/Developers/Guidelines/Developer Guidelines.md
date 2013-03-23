@@ -270,7 +270,7 @@ software. For example, there is an alternative implementation of the
 algebraic operations (matrices and vectors) which uses GPU 
 acceleration through the SlimDX framework. But all functionality
 provided in this secondary library is available in a standard C#
-implementation in the main library, such that if someone doesn't
+implementation in the main library, such that if someone
 won't (or can't) use GPU acceleration, it can still use the software 
 implementation, that albeit a lot slower, is fully functional.
 
@@ -299,8 +299,11 @@ coding standards, and such.
 Copyright
 ---------
 
-All the SciSharp products (source code, compiled binaries, documentation, examples, tools) are released under the MIT Software License, meaning the
-project is and will always be open source. We will not accept copyrighted,
-patented or otherwise certified contributions that are incompatible with
-the open source initiative and spirit. Please refrain from adding 
-copyright comments in the source code or any other part of your contribution.
+All the SciSharp products (source code, compiled binaries, documentation, examples, tools) are released under the 
+[MIT Software License](http://www.opensource.org/licenses/mit-license.php), 
+meaning the project is and will always be open source. We will not accept
+copyrighted, patented or otherwise certified contributions that are 
+incompatible with the open source initiative and spirit. 
+
+Please refrain from adding copyright comments in the source code or 
+any other part of your contribution.

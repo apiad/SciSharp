@@ -81,7 +81,13 @@ Collaboration
 For collaboration, bug reporting, and updates, please visit 
 [the Github repository](https://github.com/AlejandroPiad/SciSharp/).
 
-You can contact the project manager on <scisharp@apiad.net>
+We are in need of all kind of collaborators. We need both Windows
+and Unix developers to help us ensure the project's portability. We
+also need users who can write documentation, examples and tutorials.
+We need someone who can take care of automatic building, packing,
+and release management. If you think you can fit in any of these roles,
+or you simply have a patch or feature you want to include, please
+don't hesitate in [contacting us](scisharp@apiad.net).
 
 You can subscribe the following mailing lists to experience
 a wide range of collaboration:
@@ -101,9 +107,24 @@ and add your voice to the quorum, this is the place. This
 list requires no subscription to send a comment, but
 the first mail is always moderated.
 
+* General discussion list:
+[scisharp-discussion@lists.apiad.net](mailto:scisharp-discussion-subscribe@lists.apiad.net)
+
+    This list is where general (not development related) 
+discussions take place. You can subscribe to this list to receive 
+digests of questions and participate in the discussion about new
+features. This list requires no subscription to send comments,
+and replies to your mails will be sent back to you. The first mail
+from a new address is always moderated.
+
 * Patches list:
 [scisharp-patches@lists.apiad.net](mailto:scisharp-patches@lists.apiad.net)
 
     Send your patches to this list with a brief explanation
-to get them merged into `develop`, if you prefer to bypass
-the standard Github `pull-request` method.
+to get them merged into `develop` or some specific `feature` branch
+if you prefer to bypass the standard Github `pull-request` method
+for some reason. Patches will receive public reviews from all
+interested developers. Subscribe to this list to receive patches and
+review them. You don't need to subscribe to send patches. 
+All mails sent to this list are moderated, so please keep it as
+low profile as possible.

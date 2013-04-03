@@ -39,7 +39,7 @@ namespace SciSharp.Benchmarks.Combinatorial
                     }
                 }
 
-                // Getting the distance matrix.			
+                // Getting the distance matrix.
                 Distances = new double[NumberFacilities, NumberFacilities];
                 for (int i = 0; i < NumberFacilities; i++)
                 {

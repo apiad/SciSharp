@@ -70,7 +70,7 @@ namespace SciSharp.Learning.Classification
             for (int l = 0; l < weights.Length; l++)
             {
                 // Calculate the lth activation
-                activations[l + 1] = activations[l]*weights[l];
+                activations[l + 1] = activations[l] * weights[l];
 
                 // Apply the activation function
                 for (int i = 0; i < activations[l + 1].Dimension; i++)
@@ -96,7 +96,7 @@ namespace SciSharp.Learning.Classification
             for (int l = 0; l < weights.Length; l++)
             {
                 // Calculate the lth activation
-                values = values*weights[l];
+                values = values * weights[l];
 
                 // Apply the activation function
                 for (int i = 0; i < values.Rows; i++)
@@ -110,7 +110,7 @@ namespace SciSharp.Learning.Classification
 
         private double Sigmoid(double x)
         {
-            return 1/(1 + Math.Exp(-x));
+            return 1 / (1 + Math.Exp(-x));
         }
 
         public void Train(IEnumerable<TrainingExample> trainingExamples, int epochs, int batchSize = int.MaxValue, double minError = 0)
@@ -175,15 +175,15 @@ namespace SciSharp.Learning.Classification
                         Vector errors = example.Output - Feed(example.Input);
 
                         // Accumulate the deltas for the output layer
-                        deltas[outputLayer] = (~activations[outputLayer])._*activations[outputLayer]._*errors;
+                        deltas[outputLayer] = (~activations[outputLayer]) ._* activations[outputLayer] ._* errors;
 
                         // Backpropagate the deltas
                         for (int l = outputLayer - 1; l > 0; l--)
-                            deltas[l] = (~activations[l])._*activations[l]._*(weights[l]*deltas[l + 1]);
+                            deltas[l] = (~activations[l]) ._* activations[l] ._* (weights[l] * deltas[l + 1]);
 
                         // Calculate weight updates for each layer
                         for (int l = 0; l < updates.Length; l++)
-                            updates[l] += (activations[l].AsColumn()*deltas[l + 1].AsRow());
+                            updates[l] += (activations[l].AsColumn() * deltas[l + 1].AsRow());
 
                         // Update the error
                         error += errors.LengthSqr;
@@ -191,7 +191,7 @@ namespace SciSharp.Learning.Classification
 
                     // Update momentum
                     for (int l = 0; l < momentum.Length; l++)
-                        momentum[l] = damping*momentum[l] + learning[l]._*(updates[l]/samples);
+                        momentum[l] = damping * momentum[l] + learning[l] ._* (updates[l] / samples);
 
                     // Update learning rates
                     for (int l = 0; l < learning.Length; l++)
@@ -200,9 +200,9 @@ namespace SciSharp.Learning.Classification
                         for (int i = 0; i < learning[l].Rows; i++)
                             for (int j = 0; j < learning[l].Columns; j++)
                             {
-                                learning[l][i, j] = updates[l][i, j]*momentum[l][i, j] >= 0
+                                learning[l][i, j] = updates[l][i, j] * momentum[l][i, j] >= 0
                                                         ? Math.Min(1.00, learning[l][i, j] + 0.05)
-                                                        : Math.Max(0.01, learning[l][i, j]*0.95);
+                                                        : Math.Max(0.01, learning[l][i, j] * 0.95);
                             }
                     }
 
@@ -210,22 +210,22 @@ namespace SciSharp.Learning.Classification
                     for (int l = 0; l < weights.Length; l++)
                         weights[l] += momentum[l];
 
-                    step = (epoch*examples.Length + batchCount*batchSize + samples)*1d/(epochs*examples.Length);
+                    step = (epoch * examples.Length + batchCount * batchSize + samples) * 1d / (epochs * examples.Length);
 
-                    Logger.Log(" - Batch completed -- Samples: {0} ({1:0.00} %)", samples, step*100);
+                    Logger.Log(" - Batch completed -- Samples: {0} ({1:0.00} %)", samples, step * 100);
                 }
 
                 // Normalize the error
-                error = Math.Sqrt(error/examples.Length);
+                error = Math.Sqrt(error / examples.Length);
 
                 int elapsed = Environment.TickCount - time;
-                double remaining = (1 - step)*elapsed/step;
+                double remaining = (1 - step) * elapsed / step;
 
                 Logger.Log(" Error:             {0}", error);
                 Logger.Log(" Elapsed time:      {0}", TimeSpan.FromMilliseconds(elapsed));
                 Logger.Log(" ET Remaining time: {0}", TimeSpan.FromMilliseconds(remaining));
 
-                this.Serialize("FFN [{3}] - Epoch {0} ({1} %) - Error = {2:0.0000}".Formatted(epoch, step*100, error, guid), Serializer.Format.Binary);
+                //this.Serialize("FFN [{3}] - Epoch {0} ({1} %) - Error = {2:0.0000}".Formatted(epoch, step*100, error, guid), Serializer.Format.Binary);
 
                 if (error < minError)
                     break;

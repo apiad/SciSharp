@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 
 
@@ -433,7 +434,7 @@ namespace SciSharp
             if (vector.Dimension != matrix.Rows)
                 throw new ArgumentException("Dimensions don't match.");
 
-            var result = new double[vector.Dimension];
+            var result = new double[matrix.Columns];
 
             if (!Engine.UseParallelOptimizations)
             {
@@ -468,7 +469,7 @@ namespace SciSharp
             if (vector.Dimension != matrix.Columns)
                 throw new ArgumentException("Dimensions don't match.");
 
-            var result = new double[vector.Dimension];
+            var result = new double[matrix.Rows];
 
             if (!Engine.UseParallelOptimizations)
             {
@@ -1030,6 +1031,11 @@ namespace SciSharp
                 values[i] = Math.Max(max[i], Math.Min(min[i], this[i]));
 
             return new Vector(values);
+        }
+
+        public double Sum()
+        {
+            return elements.Sum();
         }
     }
 }

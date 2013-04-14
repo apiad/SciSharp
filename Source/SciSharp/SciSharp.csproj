@@ -84,7 +84,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>AlejandroPiad.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -120,8 +121,8 @@
     <Compile Include="Benchmarks\BenchmarkEventArgs.cs" />
     <Compile Include="Learning\Classification\ClassifiersCommitee.cs" />
     <Compile Include="Learning\Classification\FeatureExtraction.cs" />
+    <Compile Include="Learning\Classification\FeedForwardNetwork.cs" />
     <Compile Include="Learning\Classification\TrainingExample.cs" />
-    <Compile Include="Learning\Classification\FeedFowardNetwork.cs" />
     <Compile Include="Learning\Classification\TrainingResult.cs" />
     <Compile Include="Learning\Classification\TrainingSet.cs" />
     <Compile Include="Collections\Arrays.cs" />
@@ -415,9 +416,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collections\Pathfinding\SmaStarWalker.Node.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="AlejandroPiad.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,7 +1,7 @@
 \sct\footnote{Although official named Sci$\sharp$, for ASCII compatibility
 we will write the name as \sct, as it is the name used in the
 rest of the documentation and all web-based content, to avoid using
-the non-ascii $\sharp$ character ,or worse, the \# character, which
+the non-ascii $\sharp$ character, or worse, the \# character, which
 is used to define anchors in URLs.} is a \cs library for scientific computing applications.
 It contains a set of frameworks for a number of areas of scientific
 computing, such as optimization, simulation, graph searching, 
@@ -13,16 +13,38 @@ reports in several formats.
 The main goal of \sct is to provide a set of tools for
 the scientific community to develop algorithms in .NET for 
 a very broad range of applications. Despite
-being written entirely in C\# it aims to provide efficient
+being written entirely in \cs it aims to provide efficient
 implementations, based on parallel, distributed and GPU programming
-techniques. 
+techniques.
+
+Scientific computing is a very broad term which, for us, encompasses
+the algorithms, frameworks and computational tools used by scientists in 
+many different areas to solve domain-specific problems. It goes
+from numerics to optimization, from statistics to machine learning,
+from string matching to natural language processing, and so on.
+We focus on a very narrow area of scientific computing, that is,
+scientific computing for computer scientists. We say very narrow because
+even if it is a big area (almost everything in computer science can
+be fit into the definition of scientific computing -- notice the
+word's resemblance), it does not contains specific tools or
+techniques employed for instance by physicists, chemists, biologists 
+and other scientists. That said, many of the tools provided
+in \sct are of use for scientists of these areas. Physicists and
+chemists often use numerical simulation techniques to model
+processes, and biologists are among the most assiduous users
+(and developers) of string matching techniques.
+
+Although tailored for the scientist, \sct is also of use
+for developers not much into science, but who want to provide some
+``advanced'' features in their products which may require
+techniques extracted from the computer science world.
 
 This report describes the main functionalities built into
 the library, and provides a guide for its use and extension.
 It is by no mean a complete nor updated guide. \sct
 is always changing, and the best place to find up to date and
 extensive information on the nasty details of the library
-is on its \href{http://scientifictools.codeplex.com}{website}.
+is on its \href{http://scisharp.github.com}{website}.
 
 The rest of the report is divided into chapters, one for each
 of the \sct main \emph{namespaces}. Each chapter builds upon

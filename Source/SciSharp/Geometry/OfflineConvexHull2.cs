@@ -46,5 +46,25 @@ namespace SciSharp.Geometry
         }
 
         #endregion
+
+        #region Events
+
+        public event EventHandler<EventArgs<Point2>> PointConsidered;
+
+        protected virtual void OnPointConsidered(Point2 point)
+        {
+            EventHandler<EventArgs<Point2>> handler = PointConsidered;
+            if (handler != null) handler(this, new EventArgs<Point2>(point));
+        }
+
+        public event EventHandler<EventArgs<Point2>> PointDiscarded;
+
+        protected virtual void OnPointDiscarded(Point2 point)
+        {
+            EventHandler<EventArgs<Point2>> handler = PointDiscarded;
+            if (handler != null) handler(this, new EventArgs<Point2>(point));
+        }
+
+        #endregion
     }
 }

@@ -10,7 +10,7 @@ namespace SciSharp.Geometry
         #region Constructors
 
         public JarvisMarch(Point2[] points)
-            : base(points) {}
+            : base(points) { }
 
         #endregion
 
@@ -38,6 +38,8 @@ namespace SciSharp.Geometry
             {
                 // Add the current point to the hull.
                 hull.Add(Points[curr]);
+                OnPointConsidered(Points[curr]);
+
                 int next = -1;
 
                 for (int i = 0; i < Points.Length; i++)
@@ -52,7 +54,13 @@ namespace SciSharp.Geometry
 
                     // Keep the point with lowest polar angle with respect to curr.
                     if (Point2.CompareByPolar(Points[i] - Points[curr], Points[next] - Points[curr]) < 0)
+                    {
+                        if (next != 0)
+                            OnPointDiscarded(Points[next]);
+
                         next = i;
+                        OnPointConsidered(Points[next]);
+                    }
                 }
 
                 // This is the next point in the hull.

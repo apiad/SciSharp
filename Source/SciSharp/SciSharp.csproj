@@ -116,7 +116,9 @@
     <Compile Include="Benchmarks\Combinatorial\TspSolution.cs" />
     <Compile Include="Benchmarks\Combinatorial\TwoSPInstance.cs" />
     <Compile Include="Benchmarks\Combinatorial\TwoSPSolution.cs" />
+    <Compile Include="Collections\ArrayStack.cs" />
     <Compile Include="Context.cs" />
+    <Compile Include="EventArgs.cs" />
     <Compile Include="Function.Internal.cs" />
     <Compile Include="Function.cs" />
     <Compile Include="GameTheory\MonteCarloPlayout.cs" />
@@ -414,6 +416,11 @@
     <Compile Include="Tools\MultiWriter.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="Vectors.cs" />
+    <Compile Include="Visualization\Ellipse.cs" />
+    <Compile Include="Visualization\IPainter.cs" />
+    <Compile Include="Visualization\Point.cs" />
+    <Compile Include="Visualization\Scene.cs" />
+    <Compile Include="Visualization\Shape.cs" />
     <Compile Include="Wildcard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

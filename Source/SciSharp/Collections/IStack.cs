@@ -14,7 +14,7 @@ namespace SciSharp.Collections
 
         void Push(T item);
 
-        T Top();
+        T Peek();
 
         T Pop();
 

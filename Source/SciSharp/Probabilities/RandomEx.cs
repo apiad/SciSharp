@@ -9,24 +9,24 @@ namespace SciSharp.Probabilities
     [Serializable]
     public class RandomEx : Random
     {
-        protected const double TwoPi = 2*Math.PI;
+        protected const double TwoPi = 2 * Math.PI;
         protected const int BitsPerFloat = 53;
 
         protected static readonly double SgMagicConst = 1d + Math.Log(4.5d);
-        protected static readonly double NvMagicConst = 4*Math.Exp(-0.5d)/Math.Sqrt(2d);
+        protected static readonly double NvMagicConst = 4 * Math.Exp(-0.5d) / Math.Sqrt(2d);
         protected static readonly double Log4 = Math.Log(4d);
         protected static readonly double RecipBpf = Math.Pow(2, -BitsPerFloat);
 
         public static readonly RandomEx Instance = new RandomEx();
 
         public RandomEx(int seed)
-            : base(seed) {}
+            : base(seed) { }
 
-        public RandomEx() {}
+        public RandomEx() { }
 
         public double Uniform(double a, double b)
         {
-            return (a + (b - a)*Sample());
+            return (a + (b - a) * Sample());
         }
 
         public bool Bernoulli(double p)
@@ -47,7 +47,7 @@ namespace SciSharp.Probabilities
             if (count < 0 || count > items.Length)
                 throw new ArgumentOutOfRangeException("count", "Must be greater or equal to zero and less or equal to items.Length.");
 
-            return (count < items.Length/2) ? SampleTrue(items, count) : SampleFalse(items, count);
+            return (count < items.Length / 2) ? SampleTrue(items, count) : SampleFalse(items, count);
         }
 
         public T[] Sample<T>(IList<T> items, int count)
@@ -58,7 +58,7 @@ namespace SciSharp.Probabilities
             if (count < 0 || count > items.Count)
                 throw new ArgumentOutOfRangeException("count", "Must be greater or equal to zero and less or equal to items.Length.");
 
-            return (count < items.Count/2) ? SampleTrue(items, count) : SampleFalse(items, count);
+            return (count < items.Count / 2) ? SampleTrue(items, count) : SampleFalse(items, count);
         }
 
         public T Select<T>(T[] items)
@@ -87,7 +87,7 @@ namespace SciSharp.Probabilities
         {
             ICollection<int> selected = count < Math.Sqrt(length)
                                             ? new HashSet<int>()
-                                            : (ICollection<int>) new RangeSet(length);
+                                            : (ICollection<int>)new RangeSet(length);
 
             while (count-- > 0)
             {
@@ -143,7 +143,7 @@ namespace SciSharp.Probabilities
                 high = temp;
             }
 
-            return low + (high - low)*Math.Sqrt(u*mode);
+            return low + (high - low) * Math.Sqrt(u * mode);
         }
 
         public double Normal(double mu = 0d, double sigma = 1d)
@@ -155,14 +155,14 @@ namespace SciSharp.Probabilities
                 double u1 = Sample();
                 double u2 = 1d - Sample();
 
-                z = NvMagicConst*(u1 - 0.5d)/u2;
-                double zz = z/4d;
+                z = NvMagicConst * (u1 - 0.5d) / u2;
+                double zz = z / 4d;
 
                 if (zz <= -Math.Log(u2))
                     break;
             }
 
-            return mu + z*sigma;
+            return mu + z * sigma;
         }
 
         public double LogNormal(double mu = 0d, double sigma = 1d)
@@ -177,12 +177,12 @@ namespace SciSharp.Probabilities
             while (u <= 1e-7)
                 u = Sample();
 
-            return -Math.Log(u)/lambda;
+            return -Math.Log(u) / lambda;
         }
 
         public int Poisson(int lambda = 1)
         {
-            double param = 1d/lambda;
+            double param = 1d / lambda;
 
             double current = 0;
             int count = 0;
@@ -199,11 +199,11 @@ namespace SciSharp.Probabilities
         public double VonMisses(double mu = 0d, double kappa = 0d)
         {
             if (kappa <= 1e-6)
-                return TwoPi*Sample();
+                return TwoPi * Sample();
 
-            double a = 1d + Math.Sqrt(1d + 4d*kappa*kappa);
-            double b = (a - Math.Sqrt(2d*a))/(2d*kappa);
-            double r = (1d + b*b)/(2d*b);
+            double a = 1d + Math.Sqrt(1d + 4d * kappa * kappa);
+            double b = (a - Math.Sqrt(2d * a)) / (2d * kappa);
+            double r = (1d + b * b) / (2d * b);
 
             double f;
 
@@ -211,18 +211,18 @@ namespace SciSharp.Probabilities
             {
                 double u1 = Sample();
 
-                double z = Math.Cos(Math.PI*u1);
-                f = (1.0 + r*z)/(r + z);
-                double c = kappa*(r - f);
+                double z = Math.Cos(Math.PI * u1);
+                f = (1.0 + r * z) / (r + z);
+                double c = kappa * (r - f);
 
                 double u2 = Sample();
 
-                if (u2 < c*(2.0 - c) || u2 <= c*Math.Exp(1.0 - c))
+                if (u2 < c * (2.0 - c) || u2 <= c * Math.Exp(1.0 - c))
                     break;
             }
 
             double u3 = Sample();
-            double theta = u3 > 0.5d ? (mu%TwoPi) + Math.Acos(f) : (mu%TwoPi) - Math.Acos(f);
+            double theta = u3 > 0.5d ? (mu % TwoPi) + Math.Acos(f) : (mu % TwoPi) - Math.Acos(f);
             return theta;
         }
 

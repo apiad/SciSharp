@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using SciSharp.Probabilities;
+
 
 namespace SciSharp.Collections
 {
@@ -85,8 +87,7 @@ namespace SciSharp.Collections
                     if (vector.DistanceSqrTo(p) < maxDist)
                         closests.Add(vector);
                 }
-
-                    //Me quedo con el Vector si es más cercano que alguno de los que tenga
+                //Me quedo con el Vector si es más cercano que alguno de los que tenga
                 else
                 {
                     Vector max = closests.Min;
@@ -127,6 +128,17 @@ namespace SciSharp.Collections
                 // Busco en el segundo solo si tengo vectores mas alejados que el plano de corte
                 if (second != null && (closests.Count == 0 || (closests.Min - p).LengthSqr > dist*dist) && dist*dist < maxDist)
                     second.FindClosest(count, p, closests, maxDist);
+            }
+
+            public Vector RandomizedSearch(Vector input, RandomEx random)
+            {
+                double maxDistance = vector.Length + input.Length;
+                double dist = (vector - input).Length;
+
+                if (random.Uniform(0, maxDistance) > dist)
+                    return vector;
+
+                return null;
             }
         }
 

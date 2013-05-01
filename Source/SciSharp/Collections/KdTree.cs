@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
+using SciSharp.Probabilities;
+
 
 namespace SciSharp.Collections
 {
@@ -78,6 +80,16 @@ namespace SciSharp.Collections
                 return root.ToString();
 
             return string.Empty;
+        }
+
+        public Vector RandomizedSearch(Vector vector)
+        {
+            return RandomizedSearch(vector, RandomEx.Instance);
+        }
+
+        public Vector RandomizedSearch(Vector vector, RandomEx random)
+        {
+            return root.RandomizedSearch(vector, random);
         }
 
         public IEnumerable<Vector> Closest(Vector vector, float maxDist = float.MaxValue)

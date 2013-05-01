@@ -8,8 +8,8 @@ built around the concepts of grammars, automata and regular expressions.
 
 In the \texttt{Grammars} namespace you'll find an embedded DSL for
 the definition of context-free attributed grammars. The basic class
-is the \typeref{Grammar<T>}{ScientificTools.Language.Grammars.Grammar`1} 
-class (and its non-generic counterpart \typeref{Grammar}{ScientificTools.Language.Grammars.Grammar}).
+is the \typeref{Grammar<T>}
+class (and its non-generic counterpart \typeref{Grammar}).
 This class is used to define a context-free grammar whose rule attributes
 are defined by the generic parameter type.  
 
@@ -21,7 +21,7 @@ you'll find an embedded DSL which aims to provide a syntax as near as
 possible to the EBNF notation used in the formal languages community.
 
 To use this DSL, you only interact directly with the 
-\typeref{Grammar<T>}{ScientificTools.Language.Grammars.Grammar`1} class.
+\typeref{Grammar<T>} class.
 
 %------------------------------------------------------------------------
 \subsection{Defining Symbols and Productions}
@@ -33,7 +33,7 @@ that will serve as base to show how to define symbols and productions.
 Since we don't require the use of attributes, we'll be using the non-generic
 \typeref{Grammar}{ScientificTools.Language.Grammars.Grammar} class.
 
-We first need a \typeref{Grammar}{ScientificTools.Language.Grammars.Grammar} instance,
+We first need a \typeref{Grammar} instance,
 which is created simply by calling its constructor.
 
 \begin{verbatim}
@@ -42,8 +42,8 @@ var G = new Grammar();
 
 Now that we have a grammar, let's define the symbols (both non-terminal and terminals).
 Non-terminal symbols are called \emph{rules}, while terminal symbols are called \emph{tokens}.
-To define symbols we can use the methods \methodref{ScientificTools.Language.Grammars.Grammar`1}{Rule}
-and \methodref{ScientificTools.Language.Grammars.Grammar`1}{Token} respectively.
+To define symbols we can use the methods \methodref{Grammar<T>}{Rule}
+and \methodref{Grammar<T>}{Token} respectively.
 
 \begin{verbatim}
 var S = G.Rule("S");

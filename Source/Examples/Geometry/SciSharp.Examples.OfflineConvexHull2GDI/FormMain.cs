@@ -25,8 +25,8 @@ namespace SciSharp.Examples.OfflineConvexHull2GDI
 
             points = new List<Point2>();
             borders = new List<Point2>();
+            onHull = new List<Point2>();
             considered = new List<Point2>();
-            discarded = new List<Point2>();
             syncRoot = new object();
 
             cbxPicker.SelectedIndex = 0;
@@ -35,8 +35,8 @@ namespace SciSharp.Examples.OfflineConvexHull2GDI
         private Thread drawingThread;
         private List<Point2> borders;
         private readonly List<Point2> points;
+        private readonly List<Point2> onHull;
         private readonly List<Point2> considered;
-        private readonly List<Point2> discarded;
         private readonly object syncRoot;
         private readonly RandomEx random = new RandomEx();
 
@@ -63,29 +63,38 @@ namespace SciSharp.Examples.OfflineConvexHull2GDI
 
             lock (syncRoot)
             {
-                foreach (var point2 in discarded)
+                for (int i = 0; i < onHull.Count - 1; i++)
                 {
-                    e.Graphics.FillEllipse(Brushes.DarkOrange, (float)point2.X - 5f, (float)point2.Y - 5f, 10f, 10f);
+                    e.Graphics.DrawLine(Pens.Gray, (float)onHull[i].X, (float)onHull[i].Y,
+                                        (float)onHull[i + 1].X, (float)onHull[i + 1].Y);
+                }
+
+                if (onHull.Count > 1)
+                {
+                    e.Graphics.DrawLine(Pens.Gray, (float)onHull[0].X, (float)onHull[0].Y,
+                                           (float)onHull[onHull.Count - 1].X, (float)onHull[onHull.Count - 1].Y);
+                }
+
+                if (onHull.Count > 0 && considered.Count > 0)
+                {
+                    e.Graphics.DrawLine(Pens.Red, (float)onHull[0].X, (float)onHull[0].Y,
+                                           (float)considered[0].X, (float)considered[0].Y);
+
+                    e.Graphics.DrawLine(Pens.Red, (float)onHull[onHull.Count-1].X, (float)onHull[onHull.Count-1].Y,
+                                           (float)considered[0].X, (float)considered[0].Y);
+                }
+
+                foreach (var point2 in onHull)
+                {
+                    e.Graphics.FillEllipse(Brushes.DarkGreen, (float)point2.X - 5f, (float)point2.Y - 5f, 10f, 10f);
                 }
             }
 
             lock (syncRoot)
             {
-                for (int i = 0; i < considered.Count - 1; i++)
-                {
-                    e.Graphics.DrawLine(Pens.Gray, (float)considered[i].X, (float)considered[i].Y,
-                                        (float)considered[i + 1].X, (float)considered[i + 1].Y);
-                }
-
-                if (considered.Count > 1)
-                {
-                    e.Graphics.DrawLine(Pens.Gray, (float)considered[0].X, (float)considered[0].Y,
-                                           (float)considered[considered.Count - 1].X, (float)considered[considered.Count - 1].Y);
-                }
-
                 foreach (var point2 in considered)
                 {
-                    e.Graphics.FillEllipse(Brushes.DarkGreen, (float)point2.X - 5f, (float)point2.Y - 5f, 10f, 10f);
+                    e.Graphics.FillEllipse(Brushes.DarkOrange, (float)point2.X - 5f, (float)point2.Y - 5f, 10f, 10f);
                 }
             }
 
@@ -109,8 +118,8 @@ namespace SciSharp.Examples.OfflineConvexHull2GDI
             }
 
             borders.Clear();
+            onHull.Clear();
             considered.Clear();
-            discarded.Clear();
             pboxCanvas.Invalidate();
 
             gs.PointConsidered += (o, args) =>
@@ -118,19 +127,36 @@ namespace SciSharp.Examples.OfflineConvexHull2GDI
                 lock (syncRoot)
                 {
                     considered.Add(args.Data);
-                    discarded.Remove(args.Data);
+                }
+
+                pboxCanvas.Invalidate();
+                Thread.Sleep((int)Math.Pow(2, tcbInterval.Value / 10d));
+
+                lock (syncRoot)
+                {
+                    considered.Remove(args.Data);
                 }
 
                 pboxCanvas.Invalidate();
                 Thread.Sleep((int)Math.Pow(2, tcbInterval.Value / 10d));
             };
 
-            gs.PointDiscarded += (o, args) =>
+            gs.PointEnteredHull += (o, args) =>
             {
                 lock (syncRoot)
                 {
-                    discarded.Add(args.Data);
-                    considered.Remove(args.Data);
+                    onHull.Add(args.Data);
+                }
+
+                pboxCanvas.Invalidate();
+                Thread.Sleep((int)Math.Pow(2, tcbInterval.Value / 10d));
+            };
+
+            gs.PointLeftHull += (o, args) =>
+            {
+                lock (syncRoot)
+                {
+                    onHull.Remove(args.Data);
                 }
 
                 pboxCanvas.Invalidate();
@@ -146,6 +172,7 @@ namespace SciSharp.Examples.OfflineConvexHull2GDI
                                            pboxCanvas.Invalidate();
                                        });
 
+            drawingThread.IsBackground = true;
             drawingThread.Start();
         }
 
@@ -156,8 +183,8 @@ namespace SciSharp.Examples.OfflineConvexHull2GDI
 
             points.Clear();
             borders.Clear();
+            onHull.Clear();
             considered.Clear();
-            discarded.Clear();
 
             pboxCanvas.Invalidate();
         }
@@ -168,8 +195,8 @@ namespace SciSharp.Examples.OfflineConvexHull2GDI
                 drawingThread.Abort();
 
             borders.Clear();
+            onHull.Clear();
             considered.Clear();
-            discarded.Clear();
 
             pboxCanvas.Invalidate();
         }
@@ -229,7 +256,7 @@ namespace SciSharp.Examples.OfflineConvexHull2GDI
             pboxCanvas.Invalidate();
         }
 
-        private void tcbInterval_Scroll(object sender, EventArgs e)
+        private void TcbIntervalScroll(object sender, EventArgs e)
         {
             lblSpeed.Text = "Update interval (log scale) = {0} ms".Formatted((int) Math.Pow(2, tcbInterval.Value/10d));
         }

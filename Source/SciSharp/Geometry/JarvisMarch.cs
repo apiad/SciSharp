@@ -38,7 +38,7 @@ namespace SciSharp.Geometry
             {
                 // Add the current point to the hull.
                 hull.Add(Points[curr]);
-                OnPointConsidered(Points[curr]);
+                OnPointEnteredHull(Points[curr]);
 
                 int next = -1;
 
@@ -48,6 +48,8 @@ namespace SciSharp.Geometry
                     if (i == curr)
                         continue;
 
+                    OnPointConsidered(Points[i]);
+
                     // Update the first time.
                     if (next == -1)
                         next = i;
@@ -55,11 +57,12 @@ namespace SciSharp.Geometry
                     // Keep the point with lowest polar angle with respect to curr.
                     if (Point2.CompareByPolar(Points[i] - Points[curr], Points[next] - Points[curr]) < 0)
                     {
+                        OnPointEnteredHull(Points[i]);
+
                         if (next != 0)
-                            OnPointDiscarded(Points[next]);
+                            OnPointLeftHull(Points[next]);
 
                         next = i;
-                        OnPointConsidered(Points[next]);
                     }
                 }
 

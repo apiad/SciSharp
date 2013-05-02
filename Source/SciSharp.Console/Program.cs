@@ -19,32 +19,7 @@ namespace SciSharp.Console
     {
         public static void Main(string[] args)
         {
-            Logger.Writer = System.Console.Out;
-
-            var ffn = new FeedForwardNetwork(10, 1);
-
-            var examples = new List<TrainingExample>();
-            int class1 = 0, class2 = 0;
-
-            for (int i = 0; i < 10000; i++)
-            {
-                var x = Vectors.Random(10);
-                examples.Add(new TrainingExample(x, new Vector(x.Sum() > 5 ? 0.9 : 0.1)));
-                
-                if (x.Sum() > 5)
-                    class1++;
-                else
-                    class2++;
-            }
-
-            System.Console.WriteLine(class1);
-            System.Console.WriteLine(class2);
-
-            System.Console.ReadLine();
-
-            ffn.Train(examples, 1000);
-
-            System.Console.WriteLine(ffn.Weights[0]);
+            Repl();
         }
 
         private static void GenerateTsp(int size, int iterations, bool simetric)

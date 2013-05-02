@@ -181,7 +181,7 @@
             this.tcbInterval.TabIndex = 6;
             this.tcbInterval.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tcbInterval.Value = 50;
-            this.tcbInterval.Scroll += new System.EventHandler(this.tcbInterval_Scroll);
+            this.tcbInterval.Scroll += new System.EventHandler(this.TcbIntervalScroll);
             // 
             // lblSpeed
             // 

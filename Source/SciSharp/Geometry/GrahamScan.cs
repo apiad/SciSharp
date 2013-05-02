@@ -54,24 +54,25 @@ namespace SciSharp.Geometry
 
             // Get the convex hull of the first 3 points.
             stack.Push(Points[0]);
-            OnPointConsidered(Points[0]);
+            OnPointEnteredHull(Points[0]);
 
             stack.Push(Points[1]);
-            OnPointConsidered(Points[1]);
+            OnPointEnteredHull(Points[1]);
 
             stack.Push(Points[2]);
-            OnPointConsidered(Points[2]);
+            OnPointEnteredHull(Points[2]);
 
             // Invariant : The stack always contains the convex hull of the points p0 - pi
             for (int i = 3; i < Points.Length; stack.Push(Points[i++]))
             {
-                OnPointConsidered(Points[i]);
+                OnPointEnteredHull(Points[i]);
 
                 // Remove all the points interior to the hull.
                 while (stack.Count > 1 && Point2.RightTurn(stack[-2], stack[-1], Points[i]))
                 {
-                    var disc = stack.Pop();
-                    OnPointDiscarded(disc);
+                    var point = stack.Pop();
+                    OnPointConsidered(point);
+                    OnPointLeftHull(point);
                 }
             }
 

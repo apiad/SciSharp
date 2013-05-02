@@ -9,3 +9,5 @@
 *.out
 *.toc
 *.pdf
+*.lof
+*.lot

@@ -9,6 +9,7 @@
 \usepackage{makeidx}
 \usepackage{xspace}
 \usepackage{cooltooltips}
+\usepackage{graphicx}
 
 %========================================================================
 \usepackage[pdftex]{hyperref}
@@ -40,6 +41,7 @@
 \newcommand{\typeref}[1]{{\codelink{#1}}\index{\codelink{#1}}}
 \newcommand{\methodref}[2]{{\codelink{#2}}\index{\code{#1}!Method \codelink{#2}}}
 \newcommand{\propertyref}[2]{{\codelink{#2}}\index{\code{#1}!Property \codelink{#2}}}
+\newcommand{\cuttothechase}[2]{\marginpar{\small \mbox{$\Rightarrow$\\\hyperref[#1]{\texttt{#2}}}}}
 
 %========================================================================
 \begin{document}
@@ -47,8 +49,8 @@
 
 \maketitle
 \tableofcontents
-% \listoffigures
-% \listoftables
+\listoffigures
+\listoftables
 
 %========================================================================
 \chapter*{Preface}
@@ -57,27 +59,37 @@
 
 %======================================================================== 
 \chapter{Introduction}
-
-\typeref{Main}{Main}.
+\label{chap:introduction}
 
 %======================================================================== 
 \chapter{Numerics}
+\label{chap:numerics}
 
 %======================================================================== 
 \chapter{Optimization}
+\label{chap:optimization}
 
 %======================================================================== 
 \chapter{Machine Learning}
+\label{chap:machine-learning}
+
+%======================================================================== 
+\chapter{Computational Geometry}
+\label{chap:geometry}
+ \input{Geometry}
 
 %======================================================================== 
 \chapter{Language Processing}
+\label{chap:language}
  \input{Language}
  
 %======================================================================== 
 \chapter{Statistics and Probabilities}
+\label{chap:stats}
 
 %======================================================================== 
 \chapter{Simulation}
+\label{chap:simulation}
 
 %========================================================================
 \newpage

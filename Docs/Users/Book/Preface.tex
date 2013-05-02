@@ -26,7 +26,7 @@ We focus on a very narrow area of scientific computing, that is,
 scientific computing for computer scientists. We say very narrow because
 even if it is a big area (almost everything in computer science can
 be fit into the definition of scientific computing -- notice the
-word's resemblance), it does not contains specific tools or
+names resemblance), it does not contains specific tools or
 techniques employed for instance by physicists, chemists, biologists 
 and other scientists. That said, many of the tools provided
 in \sct are of use for scientists of these areas. Physicists and
@@ -39,19 +39,63 @@ for developers not much into science, but who want to provide some
 ``advanced'' features in their products which may require
 techniques extracted from the computer science world.
 
-This report describes the main functionalities built into
-the library, and provides a guide for its use and extension.
-It is by no mean a complete nor updated guide. \sct
-is always changing, and the best place to find up to date and
-extensive information on the nasty details of the library
-is on its \href{http://scisharp.github.com}{website}.
+This book provides a very shallow introduction to some
+scientific computing topics, using the \sct library. 
+We have found out, through 
+teaching many of these topics to computer science students,
+that most of times a better understanding can be obtained by going
+first through a practical introduction, dive quickly into the
+corresponding algorithms, and then, when hunger rises, search
+for the solid theoretical background. This book aims to guide in
+the first two steps, and then provide links to more advanced 
+bibliography for those interested in the third step. 
+For this reason, we will most
+of the time state things loosely (without a formal proof) and
+just point out in the direction where a formal proof can be found.
 
-The rest of the report is divided into chapters, one for each
-of the \sct main \emph{namespaces}. Each chapter builds upon
-one or more examples in a tutorial-like fashion. There are
-of course many details that escape these examples. For some
-of the most important details, footnotes or other indications will
-be given.
+We will also not focus on the implementation details of the 
+presented techniques. First of all, implementation details are,
+well, details, and a different implementation can have very different
+issues, so we see no point in discussing particularities of our
+own implementation. We will focus a lot more into how to use the
+presented tools for solving interesting problems, that into how the
+tools themselves are implemented. We will present
+the algorithms and data structures just with the necessary detail
+so that the reader can understand (at least intuitively) how and
+why they work. In any case, all the nasty details can be obtained by reading
+the source code for \sct. 
+
+We are targeting two types of audiences with this book, both computer
+science students and professional of other areas who are interested
+in applying these techniques to their own problems. For computer scientists
+who have already mastered the techniques described here the book will
+seem overly simple. However, we think that students looking for a
+digestible introduction to some advanced techniques may find it handy.
+This is our intended audience in the computer science world. We seek only
+to provide the first few pushes necessary to get you on the track for
+more advanced material. Returners from the industry who have forgotten the basis of
+these techniques can also find the book useful to dig out that
+long ago hidden knowledge. 
+For professional of other areas, we aim to provide a very practical 
+approach, showing how to apply the presented techniques to real-life
+problems. And in the meantime, we also show how to use a specific
+framework in a specific programming language that can get the job
+done.
+
+For these reasons, there are at least two ways to read the book\footnote{There
+are in fact $N!$ ways of reading it, where $N$ is the number of letters
+in the book, but most of them are of no use.}.
+for those interested in achieving a working understanding of the
+algorithms and techniques presented, the first few sections of every
+chapter will provide some theoretical background. For those interested
+in just getting the job done, we will provide whenever useful links
+to the practical sections, where we show show how to use \sct to
+solve the corresponding problems. Watch out for the \emph{cut to the chase}
+\cuttothechase{listing:hello-word}{Hello World!}
+links on the margin (if you have an electronic (PDF) version of the book,
+it should be hyper-linked, so try clicking anything that seems interesting).
+They provide a quick jump to the ``implementation area'' of the corresponding
+topic.
 
 %========================================================================
 \section*{Prerequisites}
@@ -60,8 +104,7 @@ be given.
 
 \sct is a library written in C\# for scientific computing. As
 such, this manual considers on behalf of the reader a working
-understanding both of the C\# language and the scientific topics
-covered by the library. 
+understanding both of the C\# language.
 
 The algorithms and data structures implemented in the library
 are in most cases well known in the scientific community.
@@ -79,7 +122,7 @@ websites.
 \addcontentsline{toc}{section}{About the Source Code}
 %========================================================================
 
-All code used throughout the manual is written in C\#, adhering
+All code used throughout the book is written in C\#, adhering
 to the style used in by the developers of the library. Being a 
 .NET library, all functionality can be used in any CLR compliant
 language. Most the examples used in the manual are shipped
@@ -118,7 +161,25 @@ we designed the library this way, it has become a
 common language for the library developers, and in the code examples
 you'll find it anywhere. In any case, in this manual we will
 always provide hints of how to circumvent the syntax sugar
-in favour of a more C\#-ist syntax.
+in favour of a more \cs-ist syntax.
+
+We now provide the classic ``Hello Word'' algorithm in \cs for
+the weak of heart.\label{listing:hello-world}
+
+\begin{verbatim}
+using Sytem;
+
+namespace HelloWorld
+{
+    public static class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");        
+        }    
+    }
+}
+\end{verbatim}
 
 %========================================================================
 \section*{What this Manual Is Not}

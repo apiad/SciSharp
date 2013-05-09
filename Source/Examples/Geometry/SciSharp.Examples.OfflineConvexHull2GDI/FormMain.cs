@@ -77,10 +77,10 @@ namespace SciSharp.Examples.OfflineConvexHull2GDI
 
                 if (onHull.Count > 0 && considered.Count > 0)
                 {
-                    e.Graphics.DrawLine(Pens.Red, (float)onHull[0].X, (float)onHull[0].Y,
+                    e.Graphics.DrawLine(Pens.DarkOrange, (float)onHull[0].X, (float)onHull[0].Y,
                                            (float)considered[0].X, (float)considered[0].Y);
 
-                    e.Graphics.DrawLine(Pens.Red, (float)onHull[onHull.Count-1].X, (float)onHull[onHull.Count-1].Y,
+                    e.Graphics.DrawLine(Pens.DarkOrange, (float)onHull[onHull.Count-1].X, (float)onHull[onHull.Count-1].Y,
                                            (float)considered[0].X, (float)considered[0].Y);
                 }
 
@@ -138,7 +138,6 @@ namespace SciSharp.Examples.OfflineConvexHull2GDI
                 }
 
                 pboxCanvas.Invalidate();
-                Thread.Sleep((int)Math.Pow(2, tcbInterval.Value / 10d));
             };
 
             gs.PointEnteredHull += (o, args) =>

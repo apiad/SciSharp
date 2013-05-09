@@ -30,10 +30,6 @@ namespace SciSharp
 
         public bool Equals(Pair<T> other)
         {
-            if (ReferenceEquals(null, other))
-                return false;
-            if (ReferenceEquals(this, other))
-                return true;
             return Equals(other.A, A) && Equals(other.B, B);
         }
 

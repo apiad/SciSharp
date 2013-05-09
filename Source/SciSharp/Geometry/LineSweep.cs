@@ -1,3 +1,5 @@
+using System;
+
 using SciSharp.Sorting;
 
 
@@ -20,6 +22,12 @@ namespace SciSharp.Geometry
             this.pointSorter = pointSorter;
             this.intSorter = intSorter;
         }
+
+        #endregion
+
+        #region Properties
+
+        public bool DoEvents { get; set; }
 
         #endregion
 
@@ -50,8 +58,8 @@ namespace SciSharp.Geometry
             if (points.Length <= 3)
                 return CompareAll(points);
 
-            int mid = points.Length/2;
-            double x = points[points.Length/2].X;
+            int mid = points.Length / 2;
+            double x = points[points.Length / 2].X;
 
             var left = new Point2[mid];
             var yl = new int[mid];
@@ -69,12 +77,16 @@ namespace SciSharp.Geometry
                 if (ys[i] < mid)
                     yl[l++] = ys[i];
                 else
-                    yr[r++] = ys[i - mid];
+                    yr[r++] = ys[i] - mid;
 
             Pair<Point2> leftMin = ClosestPair(left, yl);
             Pair<Point2> rightMin = ClosestPair(right, yr);
 
             Pair<Point2> min = (leftMin.A - leftMin.B).LengthSqr < (rightMin.A - rightMin.B).LengthSqr ? leftMin : rightMin;
+
+            if (DoEvents)
+                OnStep(new LineSweepEventArgs(min, 0,0,0,0, points, rightMin, leftMin, min));
+
             double delta = (min.A = min.B).LengthSqr;
 
             var y = new int[ys.Length];
@@ -94,6 +106,9 @@ namespace SciSharp.Geometry
                         min = new Pair<Point2>(points[i], points[j]);
                         delta = newDelta;
                     }
+
+                    if (DoEvents)
+                        OnStep(new LineSweepEventArgs(min, 0, 0, 0, 0, points, rightMin, leftMin, new Pair<Point2>(points[i], points[j])));
                 }
 
             return min;
@@ -110,6 +125,9 @@ namespace SciSharp.Geometry
                     if (i == j)
                         continue;
 
+                    if (DoEvents)
+                        OnStep(new LineSweepEventArgs(new Pair<Point2>(p1, p2), 0, 0, 0, 0, points, null, null, new Pair<Point2>(points[i], points[j])));
+
                     if ((points[i] - points[j]).LengthSqr < (p1 - p2).LengthSqr)
                     {
                         p1 = points[i];
@@ -117,7 +135,20 @@ namespace SciSharp.Geometry
                     }
                 }
 
-            return new Pair<Point2>(p1, p2);
+            var pair = new Pair<Point2>(p1, p2);
+            return pair;
+        }
+
+        #endregion
+
+        #region Events
+
+        public event EventHandler<LineSweepEventArgs> Step;
+
+        public void OnStep(LineSweepEventArgs e)
+        {
+            EventHandler<LineSweepEventArgs> handler = Step;
+            if (handler != null) handler(this, e);
         }
 
         #endregion

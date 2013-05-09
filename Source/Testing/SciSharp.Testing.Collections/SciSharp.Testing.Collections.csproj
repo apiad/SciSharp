@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="RandomizedHeapTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="KdTreeTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SciSharp\SciSharp.csproj">
